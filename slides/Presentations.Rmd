@@ -1,0 +1,63 @@
+---
+title: "DATA 606 Presentations"
+subtitle: "Statistics & Probability for Data Analytics"
+# author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
+date: "Spring 2024"
+output:
+  xaringan::moon_reader:
+    css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: solarized-light
+      highlightLanguage: R
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+    includes:
+      in_header: [assets/header.html]
+      after_body: [assets/insert-logo.html]
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+source('../config.R')
+```
+
+class: center, middle, inverse, title-slide
+
+# `r metadata$title`
+## `r metadata$subtitle`
+### `r metadata$author`
+### `r metadata$date`
+
+
+---
+class: font90
+# Rubric
+
+```{r, echo = FALSE}
+rubric <- readxl::read_excel('../Project/Data_Project_Rubric.xlsx')
+kable(rubric)
+```
+
+---
+class: font100
+# Directions
+
+* You have no more than 10 minutes.
+
+* If your abstract is in your slide deck, please don't read it.
+
+* We will record the session for our records but will not post the recording.
+
+* Complete the peer feedback form for each presentations: https://forms.gle/m6GFDKgJvRq19AyQ6
+
+* You will receive your feedback from us and peers (anonymized) after all the presentations have been done.
+
+* Submit a PDF of your slides and abstract to Blackboard.
+
+* Good luck!

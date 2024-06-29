@@ -1,0 +1,163 @@
+---
+title: "Final Meetup"
+subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
+author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
+date: "May 15, 2024"
+output:
+  xaringan::moon_reader:
+    css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: solarized-light
+      highlightLanguage: R
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+    includes:
+      in_header: [assets/header.html]
+      after_body: [assets/insert-logo.html]
+params:
+  github_link: "DATA606Spring2024"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+# Cartoons from https://github.com/allisonhorst/stats-illustrations
+# dplyr based upon https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome
+
+source('../config.R')
+library(fontawesome)
+```
+
+
+class: center, middle, inverse, title-slide
+
+# `r metadata$title`
+## `r metadata$subtitle`
+### `r metadata$author`
+### `r metadata$date`
+
+---
+# Final Exam
+
+* Is now available on Blackboard.
+
+* Due by end of day May 19th
+
+* You may use your book and course materials.
+
+* We expect you to complete the exam on your own (i.e. do not discuss with classmates, colleagues, significant others, etc.)
+
+* There are two parts:
+	1. Part one multiple choice questions and short answer questions.
+	2. Part two has a small data set to analyze with R, then answer some interpretation questions.
+
+* Put your answers in the Rmarkdown file and submit the PDF file. **Please do not post your answers online!**
+
+---
+# Jason's Work `r hexes('psa')`
+
+My statistical research interest is in propensity score methods. Propensity score analysis (PSA) is a quasi-experimental design used to estimate causality from observational studies.
+
+Here are some resources for PSA:
+
+* PSA [Github repository](https://github.com/jbryer/psa) includes slides slides and Shiny application: https://github.com/jbryer/psa
+* Early version of an [Intro to PSA](https://psa.bryer.org) book: https://psa.bryer.org
+* Recording of a talk given this semester for the NYC Meetup group here: https://www.youtube.com/watch?v=JLV4mtFhRMM
+
+
+.pull-left[
+<img src='images/hex/psa.png' height='100' align='left' style='padding-right:20px'> `multilevelPSA`<br/> [Multilevel PSA]((http://jason.bryer.org/multilevelPSA)
+<br/><br/>
+<img src='images/hex/TriMatch.png' height='100' align='left' style='padding-right:20px'> `TriMatch`<br/> [Matching with non-binary treatments](http://jason.bryer.org/TriMatch)
+
+]
+.pull-right[
+<img src='images/hex/PSAboot.png' height='100' align='left' style='padding-right:20px'> `PSAboot`<br/> [Bootstrapping PSA](http://jason.bryer.org/PSAboot)
+<br/><br/>
+<img src='images/hex/PSAgraphics.png' height='100' align='left' style='padding-right:20px'> `PSAgraphics`<br/> [Graphical analysis of PSA](http://jason.bryer.org/PSAgraphics)
+]
+
+
+---
+# Jason's Work (cont.)
+
+Here is list of some other R related projects I have worked on:
+
+<img src='images/hex/likert.png' height='75' align='center'> [`likert`](https://github.com/jbryer/likert) - Analysis and Visualization of Likert Based Items  
+<img src='images/hex/ShinyQDA.png' height='75' align='center'> [`ShinyQDA`](https://github.com/jbryer/ShinyQDA) - R Package and Shiny Application for the Analysis of Qualitative Data  
+<img src='images/hex/brickset.png' height='75' align='center'> [`brickset`](https://github.com/jbryer/brickset) - An R Package to Interface with the Brickset API for Getting Data About LEGO sets  
+<img src='images/hex/IRRsim.png' height='75' align='center'> [`IRRsim`](https://github.com/jbryer/IRRsim) - An R Package for Simulating Inter-Rater Reliability  
+<img src='images/hex/mldash.png' height='75' align='center'> [`mldash`](https://github.com/jbryer/mldash) - Machine Learning Dashboard  
+<img src='images/hex/FutureMapping.png' height='75' align='center'> [AmplifyApp](https://amplifyapp.org/en), [dashboard](https://amplifyapp.org/en), and [Future Mapping NYC](https://futuremapping.org)
+
+---
+# DAACS (Jason and Angela)
+
+[The Diagnostic Assessment and Achievement of College Skills](https://daacs.net) (DAACS) is a suite of technological and social supports to optimize student learning. DAACS  provides personalized feedback about students’ strengths and weaknesses in  terms of key academic and self-regulated learning skills, linking them to the resources to help them be successful students.
+
+Applications of Data Science:
+
+* We use natural language processing and predictive models to machine score the essays.
+* We use DAACS data to estimate "risk scores" for students failing so we can target them with resources to help them be successful.
+
+Received a five-year $3.8 million grant in 2021 from the Institute of Education Sciences to test the efficacy at three institutions.
+
+
+---
+# Angela's Work: Students’ responses to feedback
+
+.center[
+```{r, echo=FALSE, out.width=800}
+knitr::include_graphics('images/Lui_dissertation.jpg')
+```
+]
+
+---
+# Exploring Responses to Feedback in DAACS
+
+**Some Research Questions**
+
+1. What are the sentiments conveyed in students’ essays?
+2. What judgments about SRL feedback emerge in students’ essays?
+3. What meanings do students make of the SRL feedback? (a focus on the content criterion?)
+4. What attributions do students make if any?
+5. To what strategies do students tend to commit? 
+6. Are these (above five bullets) related to 1) the number of dots they received per domain? 2) the number of feedback pages they viewed? 3) the level of feedback specificity they viewed?
+
+**Data Sources**
+
+* Students’ essays on the DAACS Writing Assessment
+* Students’ SRL Assessment Results and Feedback
+
+**Analyses**
+
+* Sentiment Analysis
+* Content Analysis
+
+
+---
+# Thank You
+
+This has been a great semester. Please don't hesitate to reach out:
+
+.pull-left[
+`r fa('envelope')` Email: [jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu)
+`r fa('github')` Github: https://github.com/jbryer
+`r fa('link')` Personal Website: https://bryer.org
+`r fa('linkedin')` LinkedIn: [jasonbryer](https://www.linkedin.com/in/jasonbryer/)
+`r fa('mastodon')` Mastodon: [@jbryer@vis.social](https://vis.social/@jbryer)
+
+]
+.pull-right[
+`r fa('envelope')` Email: [angela.lui@cuny.edu](mailto:angela.lui@cuny.edu)
+`r fa('linkedin')` LinkedIn: [angela-m-lui-8b051928](https://www.linkedin.com/in/angela-m-lui-8b051928/)]
+
+<br/>
+
+You can download all course materials on [Github](https://github.com/jbryer/`r github_link`). Click the [clone or download](https://github.com/jbryer/`r github_link`/archive/master.zip) link to download a zip file.
+
