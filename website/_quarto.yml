@@ -1,0 +1,128 @@
+project:
+  type: website
+  output-dir: "../docs/"
+
+website:
+  page-navigation: true
+  title: "DATA 505 Fall 2024"
+  description: "DATA 606 - Statistics and Probability - CUNY School of Professional Studies"
+  site-url: "https://fall2024.data606.net/"
+
+  repo-url: https://github.com/jbryer/DATA606Fall2024
+  repo-actions: [edit, issue]
+
+  open-graph: true
+
+  page-footer:
+    # right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    # left: "&copy; Copyright 2024, Jason Bryer and Angela Lui"
+    background: "#A3C9FF"
+
+  sidebar:
+    background: "#A3C9FF"
+    logo: "images/course_logo.png"
+    pinned: true
+    align: center
+    # List of available icons: https://icons.getbootstrap.com
+    tools:
+      - icon: github
+        href: https://github.com/jbryer/DATA606Fall2024
+        text: "Github"
+        target: _blank
+      - icon: slack
+        href: https://data606fall2024.slack.com
+        text: "Slack"
+        target: _blank
+      - icon: backpack2
+        text: "CUNY"
+        menu:
+          - text: Brightspace LMS
+            url: https://brightspace.cuny.edu
+            target: _blank
+          - text: MSDS Program Page
+            url: https://sps.cuny.edu/academics/graduate/master-science-data-science-ms
+            target: _blank
+          - text: CUNYfirst
+            url: https://cunyfirst.cuny.edu
+            target: _blank
+      - icon: envelope
+        text: "Email"
+        url: mailto:jason.bryer@cuny.edu,angela.lui@cuny.edu?subject=DATA606
+
+    style: "docked"
+    search: true
+    collapse-level: 2
+    contents:
+      - section: "Course information"
+        contents:
+          # - href: course-overview.qmd
+          #   text: Overview
+          - href: course/syllabus.qmd
+            text: Syllabus
+          - href: course/instructors.qmd
+            text: Instructors
+          - href: index.qmd
+            text: Schedule
+          - href: course/textbooks.qmd
+            text: Textbooks
+          - href: course/software.qmd
+            text: Software
+          - href: course/materials.qmd
+            text: Materials
+          # TODO Fix calendar
+          # - href: course/calendar.qmd
+          #   text: Calendar
+      - section: "Assignments"
+        contents:
+          - href: assignments/daacs.qmd
+            text: "DAACS"
+          - href: assignments/participation.qmd
+            text: "Participation"
+          - href: assignments/labs.qmd
+            text: "Labs"
+          - href: assignments/project.qmd
+            text: "Project"
+          - href: assignments/exams.qmd
+            text: "Exams"
+          - href: assignments/homework.qmd
+            text: "Homework"
+      - section: "Topics"
+        contents:
+          - href: chapters/chapter1.qmd
+            text: "1 - Intro to Data"
+          - href: chapters/chapter2.qmd
+            text: "2 - Summarizing Data"
+          - href: chapters/chapter3.qmd
+            text: "3 - Probability"
+          - href: chapters/chapter4.qmd
+            text: "4 - Distributions"
+          - href: chapters/chapter5.qmd
+            text: "5 - Foundations for Inference"
+          - href: chapters/chapter6.qmd
+            text: "6 - Inference for Categorical Data"
+          - href: chapters/chapter7.qmd
+            text: "7 - Inference for Numerical Data"
+          - href: chapters/chapter8.qmd
+            text: "8 - Linear Regression"
+          - href: chapters/chapter9.qmd
+            text: "9 - Multiple and Logistic Regression"
+          - href: chapters/bayesian.qmd
+            text: "Bayesian"
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    include-in-header:
+      text: |
+        <link href="/fullcalendar-lib/main.css" rel="stylesheet" />
+        <script type="text/javascript" src="/fullcalendar-lib/main.js"></script>
+
+freeze: auto
+
+editor: source

@@ -1,0 +1,233 @@
+{
+  "index.qmd": {
+    "index.html": "6f5f966d"
+  },
+  "labs/lab-2.qmd": {
+    "lab-2.html": "6b21baa3"
+  },
+  "labs/lab-3.qmd": {
+    "lab-3.html": "c26db677"
+  },
+  "labs/lab-1.qmd": {
+    "lab-1.html": "9e9812d4"
+  },
+  "labs/lab-0.qmd": {
+    "lab-0.html": "58b95a67"
+  },
+  "labs/lab-4.qmd": {
+    "lab-4.html": "f03614e8"
+  },
+  "labs/lab-5.qmd": {
+    "lab-5.html": "5a93e15e"
+  },
+  "labs/lab-7.qmd": {
+    "lab-7.html": "a82d5907"
+  },
+  "labs/lab-6.qmd": {
+    "lab-6.html": "c6cbf1fb"
+  },
+  "course-links.qmd": {
+    "course-links.html": "b46c836d"
+  },
+  "LICENSE.md": {
+    "LICENSE.html": "a6bd6be6"
+  },
+  "weeks/week-6.qmd": {
+    "week-6.html": "dd055aad"
+  },
+  "weeks/week-7.qmd": {
+    "week-7.html": "510644ab"
+  },
+  "weeks/week-5.qmd": {
+    "week-5.html": "48c81b6f"
+  },
+  "weeks/week-4.qmd": {
+    "week-4.html": "986bdd5f"
+  },
+  "weeks/week-1.qmd": {
+    "week-1.html": "c360a874"
+  },
+  "weeks/week-3.qmd": {
+    "week-3.html": "3288d058"
+  },
+  "weeks/week-2.qmd": {
+    "week-2.html": "0be7889c"
+  },
+  "weeks/week-10.qmd": {
+    "week-10.html": "2cfdbfc9"
+  },
+  "weeks/week-11.qmd": {
+    "week-11.html": "24a5e6db"
+  },
+  "weeks/week-13.qmd": {
+    "week-13.html": "170fe1fc"
+  },
+  "weeks/week-12.qmd": {
+    "week-12.html": "e5d0358c"
+  },
+  "weeks/week-9.qmd": {
+    "week-9.html": "8f54b7fb"
+  },
+  "weeks/week-8.qmd": {
+    "week-8.html": "896a6600"
+  },
+  "weeks/week-15.qmd": {
+    "week-15.html": "51f402c7"
+  },
+  "weeks/week-14.qmd": {
+    "week-14.html": "843b26e3"
+  },
+  "404.qmd": {
+    "404.html": "6bb9ee2e"
+  },
+  "project-tips-resources.qmd": {
+    "project-tips-resources.html": "d83e0016"
+  },
+  "computing-access.qmd": {
+    "computing-access.html": "96afddc3"
+  },
+  "course-overview.qmd": {
+    "course-overview.html": "1c2b9fe5"
+  },
+  "course-team.qmd": {
+    "course-team.html": "b97eaa8c"
+  },
+  "supplemental/mlr-matrix.qmd": {
+    "mlr-matrix.html": "a98d020f"
+  },
+  "supplemental/model-diagnostics-matrix.qmd": {
+    "model-diagnostics-matrix.html": "c5b1f7ac"
+  },
+  "supplemental/slr-derivations.qmd": {
+    "slr-derivations.html": "fbd68882"
+  },
+  "supplemental/log-transformations.qmd": {
+    "log-transformations.html": "2a378952"
+  },
+  "supplemental/model-selection-criteria.qmd": {
+    "model-selection-criteria.html": "99a6b499"
+  },
+  "computing-pipelines.qmd": {
+    "computing-pipelines.html": "c45ad251"
+  },
+  "course-faq.qmd": {
+    "course-faq.html": "0ba7a0d9"
+  },
+  "course-support.qmd": {
+    "course-support.html": "e4581d3b"
+  },
+  "project-description.qmd": {
+    "project-description.html": "f7a43e3d"
+  },
+  "course-syllabus.qmd": {
+    "course-syllabus.html": "8130beef"
+  },
+  "computing-troubleshooting.qmd": {
+    "computing-troubleshooting.html": "9e99d4bf"
+  },
+  "chapters/chapter3.qmd": {
+    "chapter3.html": "eb40c3ce"
+  },
+  "chapters/chapter2.qmd": {
+    "chapter2.html": "21530607"
+  },
+  "chapters/chapter1.qmd": {
+    "chapter1.html": "9a75d642"
+  },
+  "chapters/chapter5.qmd": {
+    "chapter5.html": "2852cf68"
+  },
+  "chapters/chapter4.qmd": {
+    "chapter4.html": "2ac67c07"
+  },
+  "chapters/chapter6.qmd": {
+    "chapter6.html": "78da7b18"
+  },
+  "chapters/chapter7.qmd": {
+    "chapter7.html": "517f1cd9"
+  },
+  "chapters/chapter9.qmd": {
+    "chapter9.html": "da39d412"
+  },
+  "chapters/chapter8.qmd": {
+    "chapter8.html": "2e0b79cc"
+  },
+  "chapters/bayesian.qmd": {
+    "bayesian.html": "8cd08816"
+  },
+  "course-calendar.qmd": {
+    "course-calendar.html": "6a6a774e"
+  },
+  "course-instructors.qmd": {
+    "course-instructors.html": "e8a599de"
+  },
+  "course/overview.qmd": {
+    "overview.html": "a80824bb"
+  },
+  "course/instructors.qmd": {
+    "instructors.html": "f51c45a9"
+  },
+  "course/support.qmd": {
+    "support.html": "bfd63921"
+  },
+  "course/links.qmd": {
+    "links.html": "fe3fdf51"
+  },
+  "course/syllabus.qmd": {
+    "syllabus.html": "618ac09a"
+  },
+  "course/calendar.qmd": {
+    "calendar.html": "030d68c3"
+  },
+  "assignments/exams.md": {
+    "exams.html": "be805a5d"
+  },
+  "assignments/participation.md": {
+    "participation.html": "840d8c24"
+  },
+  "assignments/homework_ungraded.md": {
+    "homework_ungraded.html": "1f692c64"
+  },
+  "assignments/daacs.md": {
+    "daacs.html": "c9beb072"
+  },
+  "assignments/project.md": {
+    "project.html": "e87b2ee4"
+  },
+  "assignments/homework.md": {
+    "homework.html": "160a6d82"
+  },
+  "assignments/labs.md": {
+    "labs.html": "d92895d8"
+  },
+  "course/materials.qmd": {
+    "materials.html": "697539a2"
+  },
+  "course/software.qmd": {
+    "software.html": "b8da04ea"
+  },
+  "course/textbooks.qmd": {
+    "textbooks.html": "987aba44"
+  },
+  "assignments/labs.qmd": {
+    "labs.html": "ea7d58af"
+  },
+  "assignments/homework.qmd": {
+    "homework.html": "03aeb256"
+  },
+  "assignments/exams.qmd": {
+    "exams.html": "1c56192d"
+  },
+  "assignments/project.qmd": {
+    "project.html": "d6772623"
+  },
+  "assignments/daacs.qmd": {
+    "daacs.html": "43cf444d"
+  },
+  "assignments/homework_ungraded.qmd": {
+    "homework_ungraded.html": "a3c86530"
+  },
+  "assignments/participation.qmd": {
+    "participation.html": "187e4c96"
+  }
+}
