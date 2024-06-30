@@ -3,18 +3,19 @@ title: "Welcome to DATA606!"
 author: "Jason Bryer and Angela Lui"
 date: "2024-06-29"
 image: "welcome.png"
+description: "Important information on how to get started with this course. Please read this post carefully."
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 source('../../config.R')
 meetup_image(out_file = 'welcome.png',
 			 title = 'Welcome to DATA606!',
-			 date = 'August 28, 2024')
+			 date = ' ')
 ```
 
 Welcome to DATA606! Your instructors will be Dr. Jason Bryer and Dr. Angela Lui. Couple of important notes as you get started:
 
-* The course syllabus located here: https://`r tolower(semester)``r year`.data606.net We will post all course materials there. Blackboard will be used primarily for submitting assignments. Please read the syllabus carefully! Send us any questions you may still have about the course.
+* The course syllabus located on this website here: [https://`r tolower(semester)``r year`.data606.net/course/syllabus.html](https://`r tolower(semester)``r year`.data606.net/course/syllabus.html) We will post all course materials there. Blackboard will be used primarily for submitting assignments. Please read the syllabus carefully! Send us any questions you may still have about the course.
 
 * Complete this [Google Form](`r formative_assessment`) as soon as possible. We will use some of the data (in aggregate) in the meetup.
 

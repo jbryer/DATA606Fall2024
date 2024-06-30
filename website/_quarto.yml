@@ -122,7 +122,7 @@ format:
     mainfont: "Atkinson Hyperlegible"
     code-copy: true
     code-overflow: wrap
-    toc: true
+    toc: false
     include-in-header:
       text: |
         <link href="/fullcalendar-lib/main.css" rel="stylesheet" />

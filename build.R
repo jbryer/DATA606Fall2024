@@ -3,17 +3,17 @@ source('config.R')
 ##### Build blog posts for meetups #############################################
 meetups <- readxl::read_excel('Schedule.xlsx', sheet = 'Meetups')
 for(i in 1:nrow(meetups)) {
-	if(!is.na(meetups[i,]$Slides) | !is.na(meetups[i,]$Youtube)) {
-		blogfile <- paste0('website/posts/', as.Date(meetups[i,]$Date), '.Rmd')
-		blogpath <- paste0('/blog/', as.Date(meetups[i,]$Date), '/')
-		
+	if(!is.na(meetups[i,]$Slides) | !is.na(meetups[i,]$Video)) {
+		blogfile <- paste0('website/posts/', as.Date(meetups[i,]$Date), '-',
+						   gsub(' ', '_', meetups[i,]$Topic),
+						   '.qmd')
+
 		blogcontent <- ''
 		if(!is.na(meetups[i,]$Slides)) {
 			blogcontent <- paste0(blogcontent, '[Click here](/slides/', meetups[i,]$Slides, '.html#1) to open the slides ([PDF](/slides/', meetups[i,]$Slides, '.pdf)).\n\n')
-			blogfile <- paste0('website/content/blog/', meetups[i,]$Slides, '.Rmd')
 		}
-		if(!is.na(meetups[i,]$Youtube)) {
-			blogcontent <- paste0(blogcontent, '<iframe width="560" height="315" src="https://www.youtube.com/embed/', meetups[i,]$Youtube, '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+		if(!is.na(meetups[i,]$Video)) {
+			blogcontent <- paste0(blogcontent, '<iframe width="560" height="315" src="https://www.youtube.com/embed/', meetups[i,]$Video, '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
 		}
 		
 		additionalcontent <- ''
@@ -23,16 +23,21 @@ for(i in 1:nrow(meetups)) {
 		
 		pubdate <- as.character(min(as.Date(meetups[i,]$Date), Sys.Date()))
 		
+		meetup_image(
+			title = meetups[i,]$Topic,
+			date = format(meetups[i,]$Date, '%B %d, %Y'),
+			out_file = paste0('website/posts/', tools::file_path_sans_ext(basename(blogfile)), '.png')
+		)
+
 		cat('---', '\n',
 			'title: "', meetups[i,]$Topic, '"\n',
 			'author: "Jason Bryer and Angela Lui"', '\n',
 			'date: ', pubdate, '\n',
 			'draft: false', '\n',
+			'description: "Slides and recording for the *', meetups[i,]$Topic, '* meetup."\n',
 			'categories: ["Meetups"]', '\n',
-			'tags: ["Annoucement"]', '\n',
+			'image: "', tools::file_path_sans_ext(basename(blogfile)), '.png"\n',
 			'---', '\n\n\n',
-			blogcontent, '\n\n',
-			'<!--more-->\n\n',
 			blogcontent, '\n\n',
 			additionalcontent, '\n\n',
 			sep  = '',

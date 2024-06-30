@@ -1,0 +1,17 @@
+---
+title: "Intro to the Course"
+author: "Jason Bryer and Angela Lui"
+date: 2024-06-30
+draft: false
+description: "Slides and recording for the Intro to the Course meetup."
+categories: ["Meetups"]
+image: "2024-08-28-Intro_to_the_Course.png"
+---
+
+
+[Click here](/slides/00-Intro_to_Course.html#1) to open the slides ([PDF](/slides/00-Intro_to_Course.pdf)).
+
+
+
+
+

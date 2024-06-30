@@ -2,7 +2,7 @@
 title: "Announcements"
 listing:
   contents: posts
-  # fields: [date, title, image]
+  fields: [date, title, description, image]
   type: default
   # max-description-length: 10000
   # items: 20

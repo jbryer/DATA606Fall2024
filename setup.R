@@ -123,3 +123,13 @@ file.copy(out_file,
 # 	   plot = sticker,
 # 	   width = 50.8, height = 50.8, units = 'mm', dpi = 16)
 
+##### Create images for meetups ################################################
+meetups <- readxl::read_excel('Schedule.xlsx', sheet = 'Meetups')
+for(i in seq_len(nrow(meetups))) {
+	datestr <- meetups[i,]$Date |> as.character()
+	meetup_image(
+		title = meetups[i,]$Topic,
+		date = format(meetups[i,]$Date, '%B %d, %Y'),
+		out_file = paste0('website/posts/', datestr, '-', gsub(' ', '_', meetups[i,]$Topic), '.png')
+	)
+}
