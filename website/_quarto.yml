@@ -25,6 +25,9 @@ website:
     align: center
     # List of available icons: https://icons.getbootstrap.com
     tools:
+      - icon: calendar-check
+        href: course/schedule.qmd
+        text: "Schedule"
       - icon: github
         href: https://github.com/jbryer/DATA606Fall2024
         text: "Github"
@@ -33,7 +36,7 @@ website:
         href: https://data606fall2024.slack.com
         text: "Slack"
         target: _blank
-      - icon: backpack2
+      - icon: link-45deg
         text: "CUNY"
         menu:
           - text: Brightspace LMS
@@ -53,6 +56,8 @@ website:
     search: true
     collapse-level: 2
     contents:
+      - href: "index.qmd"
+        text: "Announcements"
       - section: "Course information"
         contents:
           # - href: course-overview.qmd
@@ -61,7 +66,7 @@ website:
             text: Syllabus
           - href: course/instructors.qmd
             text: Instructors
-          - href: index.qmd
+          - href: course/schedule.qmd
             text: Schedule
           - href: course/textbooks.qmd
             text: Textbooks
@@ -123,6 +128,6 @@ format:
         <link href="/fullcalendar-lib/main.css" rel="stylesheet" />
         <script type="text/javascript" src="/fullcalendar-lib/main.js"></script>
 
-freeze: auto
+freeze: false
 
 editor: source

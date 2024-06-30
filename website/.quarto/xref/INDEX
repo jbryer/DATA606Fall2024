@@ -229,5 +229,11 @@
   },
   "assignments/participation.qmd": {
     "participation.html": "187e4c96"
+  },
+  "course/schedule.qmd": {
+    "schedule.html": "18e2549f"
+  },
+  "posts/2024-08-28-Welcome.qmd": {
+    "2024-08-28-Welcome.html": "acdaa20d"
   }
 }

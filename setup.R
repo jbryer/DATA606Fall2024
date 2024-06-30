@@ -122,3 +122,4 @@ file.copy(out_file,
 # ggsave(filename = 'website/images/favicon-32x32.png',
 # 	   plot = sticker,
 # 	   width = 50.8, height = 50.8, units = 'mm', dpi = 16)
+

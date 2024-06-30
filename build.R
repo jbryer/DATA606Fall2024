@@ -1,8 +1,50 @@
-#### Build website
+source('config.R')
+
+##### Build blog posts for meetups #############################################
+meetups <- readxl::read_excel('Schedule.xlsx', sheet = 'Meetups')
+for(i in 1:nrow(meetups)) {
+	if(!is.na(meetups[i,]$Slides) | !is.na(meetups[i,]$Youtube)) {
+		blogfile <- paste0('website/posts/', as.Date(meetups[i,]$Date), '.Rmd')
+		blogpath <- paste0('/blog/', as.Date(meetups[i,]$Date), '/')
+		
+		blogcontent <- ''
+		if(!is.na(meetups[i,]$Slides)) {
+			blogcontent <- paste0(blogcontent, '[Click here](/slides/', meetups[i,]$Slides, '.html#1) to open the slides ([PDF](/slides/', meetups[i,]$Slides, '.pdf)).\n\n')
+			blogfile <- paste0('website/content/blog/', meetups[i,]$Slides, '.Rmd')
+		}
+		if(!is.na(meetups[i,]$Youtube)) {
+			blogcontent <- paste0(blogcontent, '<iframe width="560" height="315" src="https://www.youtube.com/embed/', meetups[i,]$Youtube, '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+		}
+		
+		additionalcontent <- ''
+		if(!is.na(meetups[i,]$Resources)) {
+			additionalcontent <- meetups[i,]$Resources
+		}
+		
+		pubdate <- as.character(min(as.Date(meetups[i,]$Date), Sys.Date()))
+		
+		cat('---', '\n',
+			'title: "', meetups[i,]$Topic, '"\n',
+			'author: "Jason Bryer and Angela Lui"', '\n',
+			'date: ', pubdate, '\n',
+			'draft: false', '\n',
+			'categories: ["Meetups"]', '\n',
+			'tags: ["Annoucement"]', '\n',
+			'---', '\n\n\n',
+			blogcontent, '\n\n',
+			'<!--more-->\n\n',
+			blogcontent, '\n\n',
+			additionalcontent, '\n\n',
+			sep  = '',
+			file = blogfile)
+	}
+}
+
+#### Build website #############################################################
 quarto::quarto_render('website/', as_job = FALSE)
 
 
-##### Copy slides and build PDF versions
+##### Copy slides and build PDF versions #######################################
 tocopy <- c(list.files('Slides', pattern = '.html'),
 			list.dirs('Slides', recursive = FALSE, full.names = FALSE))
 ignore <- c('draft')

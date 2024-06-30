@@ -1,0 +1,59 @@
+---
+title: "DATA606 - Statistics and Probability"
+tbl-colwidths: [10,10,20,5,5,5,5,5,5,5]
+editor_options: 
+  chunk_output_type: console
+---
+
+This page contains an outline of the topics, content, and assignments for the semester.
+Note that this schedule will be updated as the semester progresses, with all changes documented here.
+
+
+```{r, echo=FALSE, results='asis'}
+slides_uri <- '/slides/'
+
+options(knitr.kable.NA = '')
+schedule <- readxl::read_excel('../../Schedule.xlsx') |> as.data.frame()
+# icons::download_fontawesome()
+
+schedule$Date <- format(schedule$Date, '%a, %b %d')
+
+links <- !is.na(schedule$Link)
+if(sum(links) > 0) {
+	# tmp <- paste0(' <a href="', schedule[links,]$Link, '">', icons::fontawesome('readme'), '</a>')
+	# tmp <- gsub('\\n', '', tmp)
+	# schedule[links,]$Link <- tmp
+	schedule[links,]$Topic <- paste0('[', schedule[links,]$Topic, '](',
+									 schedule[links,]$Link, ')')
+}
+
+slides <- !is.na(schedule$Slides)
+if(sum(slides) > 0) {
+	slide_links <- paste0(
+		'<a href="', slides_uri, schedule[slides,]$Slides, '.html">', 
+		icons::fontawesome('safari'), '</a>',
+		'&nbsp;&nbsp;',
+		'<a href="', slides_uri, schedule[slides,]$Slides, '.pdf">', 
+		icons::fontawesome('file-pdf'), '</a>'
+	)
+	slide_links <- gsub('\\n', '', slide_links)
+	schedule[slides,]$Slides <- slide_links
+}
+
+video <- !is.na(schedule$Video)
+if(sum(video) > 0) {
+	video_links <- paste0(
+		'<a href="', schedule[video,]$Video, '" target="_new">',
+		icons::fontawesome('youtube'), '</a>'
+	)
+	video_links <- gsub('\\n', '', video_links)
+	schedule[video,]$Video <- video_links
+}
+
+schedule |>
+	dplyr::select(Date, StartTime, Topic, Slides, Video) |>
+	knitr::kable()
+```
+
+
+
