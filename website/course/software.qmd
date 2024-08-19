@@ -39,7 +39,8 @@ Once everything is installed, execute the following command in RStudio to instal
 install.packages(c('openintro','devtools','tidyverse', 'ggplot2',
                    'psych','reshape2','knitr','markdown','shiny','R.rsp',
                    'fivethirtyeight'))
-devtools::install_github("jbryer/DATA606")
+remotes::install_github("jbryer/DATA606")
+remotes::install_github("jbryer/VisualStats")
 ```
 
 ### The `DATA606` R Package
