@@ -17,6 +17,19 @@ I am currently an Assistant Professor in [Data Science and Information Systems](
 
 I am a Research Project Manager for the Diagnostic Assessment and Achievement of College Skills, a five year multi-million-dollar IES grant funded project. I graduated with my doctoral degree in Educational Psychology and Methodology at the University at Albany – SUNY in 2020, and served as a postdoctoral associate for a year at Rutgers University. For my dissertation, I explored students’ interpretations and feelings about their teacher’s feedback within a formative assessment context. More broadly, my research interests include formative assessment and self-regulated learning, as well as applied measurement and statistics. A fun fact: I grew up in Manhattan, NY, one of the busiest cities, but am now living happily on a farm with my chosen family, helping to take care of trees, gardens, barns, chickens, a cat, and a dog. 
 
+<img src='/images/George_Headshot.jpg' width='200' align='left' style = 'padding-right: 20px' />
+
+**George Hagstorm, Ph.D.**  
+**Email:** [george.hagstrom@cuny.edu](mailto:george.hagstrom@cuny.edu)
+
+I am currently a Doctoral Lecturer in [Data Science and Information Systems](https://sps.cuny.edu/academics/graduate/master-science-data-science-ms) at the [City University of New York](https://sps.cuny.edu). Additionally, in collaboration with scientists at Princeton University I develop mathematical models of marine phytoplankton and heterotrophic bacteria to improve our
+understanding of the Earth's Biogeochemical Cycles. Prior to joining CUNY, I was a Research Scientist at Princeton University in the Levin lab at the Department of Ecology and Evolutionary Biology
+and a postdoctoral researcher in the Magneto Fluids Division at the Courant Institute for Mathematical Sciences. My [research interests](https://scholar.google.com/citations?user=2La77skAAAAJ&hl=en) include the application of Bayesian statistics and Machine Learning to incorporate nontraditional datasets (such as from 'omics) into mechanistic models of marine ecosystems and
+biogeochemical cycling, trait-based modeling, and critical transitions in complex ecological, social, or economic systems. In my free time, I enjoy cycling and exploring New York City.
+
+
+
+
 ### Contact
 
 Office Hours (Zoom is preferred): By appointment. You're encouraged to schedule an appointment and I have time nearly everyday. You are also encouraged to ask us questions on Slack. If you wish to ask a question in private, you can email me directly.
