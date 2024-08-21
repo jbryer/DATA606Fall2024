@@ -8,6 +8,7 @@ editor_options:
 This page contains an outline of the topics, content, and assignments for the semester.
 Note that this schedule will be updated as the semester progresses, with all changes documented here.
 
+[Click here to join the meetups](https://us02web.zoom.us/j/82211588219?pwd=NufjffoPm9BTE05ClrmqFaogM9Rdtr.1).
 
 ```{r, echo=FALSE, results='asis'}
 slides_uri <- '/slides/'
