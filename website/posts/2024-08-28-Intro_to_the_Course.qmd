@@ -1,7 +1,7 @@
 ---
 title: "Intro to the Course"
 author: "Jason Bryer and Angela Lui"
-date: 2024-08-22
+date: 2024-08-27
 draft: false
 description: "Slides and recording for the *Intro to the Course* meetup."
 categories: ["Meetups"]

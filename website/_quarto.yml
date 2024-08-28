@@ -3,6 +3,12 @@ project:
   output-dir: "../docs/"
 
 website:
+  announcement: 
+    content: "Our first meetup will be at 8:00pm on Wednesday, August 28th. Find the link to join on the schedule page."
+    position: below-navbar # above-navbar or below-navbar
+    icon: info-circle # https://icons.getbootstrap.com/?q=info
+    dismissable: true
+    type: info # primary, secondary, success, danger, warning, info, light, dark
   page-navigation: true
   title: "DATA 505 Fall 2024"
   description: "DATA 606 - Statistics and Probability - CUNY School of Professional Studies"

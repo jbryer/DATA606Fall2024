@@ -15,7 +15,7 @@ DATA 606 Spring 2024
 
 <a href='`r paste0('https://', tolower(semester), year, '.data606.net')`'><img src='website/images/course_logo.png' align="right" height="200" /></a>
 
-Instructors: [Jason Bryer](https://bryer.org), Ph.D. and Angela Lui,
+Instructors: [Jason Bryer](https://bryer.org), Ph.D. Angela Lui, Ph.D., and George Hagstrom, Ph.D.,
 Ph.D.  
 Class Meetup: Wednesdays at 8:00pm  
 Office Hours: By appointment  

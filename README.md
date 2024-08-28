@@ -5,8 +5,8 @@
 
 <a href='https://fall2024.data606.net'><img src='website/images/course_logo.png' align="right" height="200" /></a>
 
-Instructors: [Jason Bryer](https://bryer.org), Ph.D. and Angela Lui,
-Ph.D.  
+Instructors: [Jason Bryer](https://bryer.org), Ph.D. Angela Lui, Ph.D.,
+and George Hagstrom, Ph.D., Ph.D.  
 Class Meetup: Wednesdays at 8:00pm  
 Office Hours: By appointment  
 Contact: <jason.bryer@cuny.edu> and <angela.lui@sps.cuny.edu> or
