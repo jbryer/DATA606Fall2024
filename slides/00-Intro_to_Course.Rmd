@@ -1,7 +1,7 @@
 ---
 title: "Introduction to DATA 606"
 subtitle: "Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstorm, Ph.D.
 date: "Fall 2024"
 output:
   xaringan::moon_reader:
@@ -37,16 +37,6 @@ class: center, middle, inverse, title-slide
 ### `r metadata$author`
 ### `r metadata$date`
 
----
-class: hide-logo, bottom, right, title-slide
-background-image: url(images/Greetings_from_Statistics.jpeg)
-background-size: contain
-
-.font70[
-
-[@skyetetra](https://twitter.com/ChelseaParlett/status/1340463322118856705)
-
-]
 
 ---
 # Agenda
@@ -69,11 +59,15 @@ background-size: contain
 # A little about Jason...
 
 * Assistant Professor at CUNY in Data Science and Information Systems
-* Principal Investigator for a Department of Education Grant (part of their FIPSE First in the World program) to develop a Diagnostic Assessment and Achievement of College Skills ([www.DAACS.net](http://www.daacs.net))  
+
+* Principal Investigator for a Department of Education Grant to develop and test the Diagnostic Assessment and Achievement of College Skills ([www.DAACS.net](http://www.daacs.net))  
+
 * Authored over a dozen R packages including:
 	* [likert](http://github.com/jbryer/likert)
-	* [sqlutils](http://github.com/jbryer/sqlutils)
-	* [timeline](http://github.com/jbryer/timeline)
+	* [ShinyQDA](http://github.com/jbryer/ShinyQDA)
+	* [DTedit](http://github.com/jbryer/DTedit)
+	* [login](http://github.com/jbryer/login)
+
 * Specialize in propensity score methods. Three new methods/R packages developed include:
 	* [multilevelPSA](http://github.com/jbryer/multilevelPSA)
 	* [TriMatch](http://github.com/jbryer/TriMatch)
@@ -198,11 +192,9 @@ global scale ocean and climate models
 
 Syllabus and course materials are here: [https://`r paste0(tolower(semester), year)`.data606.net](https://`r paste0(tolower(semester), year)`.data606.net)
 
-The site is built using the [Blogdown](https://bookdown.org/yihui/blogdown/) R package and hosted on [Github](https://github.com/jbryer/`r github_link`). Each page of the site has a "Improve this page" link at the bottom right, use that to start a pull request on Github.
+The site is built using [Quarto](https://quarto.org) and hosted on [Github](https://github.com/jbryer/`r github_link`). Each page of the site has a "Edit this page" link at the bottom right, use that to start a pull request on Github.
 
-We will use Blackboard primary for submitting assignments only. Please submit:
-
-* A PDF or link to the built HTML (e.g. Rpubs, [Github](http://htmlpreview.github.io/))
+We will use Brightspace primary for submitting assignments only. Please submit a PDF or link to the built HTML (e.g. Rpubs, [Github](http://htmlpreview.github.io/))
 
 PDFs are preferred for the homework as there is some LaTeX formatting in the R markdown files. The `tineytex` R package helps with install LaTeX, but you can also install LaTeX using [MiKTeX](http://miktex.org) (for Windows) and [BasicTeX](http://www.tug.org/mactex/morepackages.html) (for Mac) See this page for more information: 
 https://`r paste0(tolower(semester), year)`.data606.net/course-overview/software/
@@ -353,10 +345,8 @@ This textbooks has a chapter on Bayesian analysis that we will use at the end of
 
 * Slack Channel: `r slack_link`
 	* [Click here to join the group](`r slack_invite_link`)
-	
-* Github Issues - Use this for issues or problems with the `DATA606` package: https://github.com/jbryer/DATA606/issues
 
-* Email: [jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu) and [angela.lui@cuny.edu](mailto:angela.lui@cuny.edu)
+* Email: [jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu), [angela.lui@cuny.edu](mailto:angela.lui@cuny.edu), and [george.hagstorm@cuny.edu](mailto:george.hagstorm@cuny.edu)
 
 * Phone/Zoom: Please email to schedule a time to meet.
 
@@ -366,12 +356,9 @@ This textbooks has a chapter on Bayesian analysis that we will use at the end of
 
 # Software `r hexes(c('rmarkdown', 'RStudio', 'tinytex'))`
 
-This is an applied statistics course so we will make extensive use of the [R statistical programming language](https://www.r-project.org). You have two options for using R in this course:
+This is an applied statistics course so we will make extensive use of the [R statistical programming language](https://www.r-project.org).
 
-* CUNY SPS has an RStudio Server that you can access using a browser: https://rstudio.sps.cuny.edu  
-  You will use your CUNY login credentials to log in.
-
-* Install [R](https://cran.r-project.org) and [RStudio](https://rstudio.com) on your own computer. I encourage everyone to do this at some point by the end of the semester. I have instructions on the course website here: https://spring2024.data606.net/course-overview/software/
+Install [R](https://cran.r-project.org) and [RStudio](https://rstudio.com) on your own computer. I encourage everyone to do this at some point by the end of the semester. I have instructions on the course website here: https://spring2024.data606.net/course-overview/software/
 
 You will also need to have [LaTeX](https://www.latex-project.org) installed as well in order to create PDFs. The [`tinytex`](https://yihui.org/tinytex/) R package helps with this process:
 
@@ -420,6 +407,7 @@ class: inverse, right, middle, hide-logo
 
 [`r icons::fontawesome("paper-plane")` jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu)  
 [`r icons::fontawesome("paper-plane")` angela.lui@cuny.edu](mailto:angela.lui@cuny.edu)  
+[`r icons::fontawesome("paper-plane")` george.hagstorm@cuny.edu](mailto:george.hagstorm@cuny.edu)  
 [`r icons::fontawesome("slack")` DATA606spring2024.slack.com](https://DATA606spring2024.slack.com)  
 [`r icons::fontawesome("github")` @jbryer](https://github.com/jbryer)  
 [`r icons::fontawesome("github")` @angelalui11](https://github.com/angelalui11)  
