@@ -53,7 +53,7 @@ if(sum(video) > 0) {
 
 schedule |>
 	dplyr::select(Date, Topic, Slides, Video) |>
-	knitr::kable(align = c('l', 'l', 'c', 'c'), escale = FALSE) #|> kableExtra::kable_styling(full_width = FALSE)
+	knitr::kable(align = c('l', 'l', 'c', 'c'), escape = FALSE) #|> kableExtra::kable_styling(full_width = FALSE)
 ```
 
 

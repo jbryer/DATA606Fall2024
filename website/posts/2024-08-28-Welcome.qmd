@@ -23,7 +23,7 @@ Welcome to DATA606! Your instructors will be Dr. Jason Bryer, Dr. Angela Lui and
 
 * For private communications, you can either send private Slack messages or email us at [jason.bryer@cuny.edu, angela.lui@cuny.edu, and george.hagstrom@cuny.edu](mailto:jason.bryer@cuny.edu,angela.lui,george.hagstrom@cuny.edu@cuny.edu?subject=DATA606).
 
-* Complete the self-regulated learning assessment in DAACS. Visit [/assignments/daacs/](/assignments/daacs/) for more information.
+* Complete the self-regulated learning assessment in DAACS. Visit [/assignments/daacs.html](/assignments/daacs.html) for more information.
 
 * Once you go through the syllabus, try starting Lab 1 as soon as you can. This will require you to install R and RStudio and will help get you get acquainted with R. See the software page for more information about the software we will use for this course.
 
