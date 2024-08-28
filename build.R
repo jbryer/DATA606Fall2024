@@ -96,7 +96,7 @@ for(i in tocopy) {
 }
 
 if(FALSE) {
-	httpuv::runStaticServer("docs/", port = 2112, background = TRUE, browse = FALSE)
+	httpuv::runStaticServer("docs/", port = 2112, background = TRUE, browse = TRUE)
 	browseURL(paste0('http://localhost:2112/'))
 	httpuv::stopAllServers()
 }
