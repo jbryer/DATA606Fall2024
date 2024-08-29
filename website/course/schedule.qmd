@@ -31,10 +31,10 @@ if(sum(links) > 0) {
 slides <- !is.na(schedule$Slides)
 if(sum(slides) > 0) {
 	slide_links <- paste0(
-		'<a href="', slides_uri, schedule[slides,]$Slides, '.html">', 
+		'<a href="', slides_uri, schedule[slides,]$Slides, '.html" target="_new">', 
 		icons::fontawesome('safari'), '</a>',
 		'&nbsp;&nbsp;',
-		'<a href="', slides_uri, schedule[slides,]$Slides, '.pdf">', 
+		'<a href="', slides_uri, schedule[slides,]$Slides, '.pdf" target="_new">', 
 		icons::fontawesome('file-pdf'), '</a>'
 	)
 	slide_links <- gsub('\\n', '', slide_links)
@@ -44,7 +44,7 @@ if(sum(slides) > 0) {
 video <- !is.na(schedule$Video)
 if(sum(video) > 0) {
 	video_links <- paste0(
-		'<a href="', schedule[video,]$Video, '" target="_new">',
+		'<a href="https://youtu.be/', schedule[video,]$Video, '" target="_new">',
 		icons::fontawesome('youtube'), '</a>'
 	)
 	video_links <- gsub('\\n', '', video_links)
