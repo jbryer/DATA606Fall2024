@@ -69,7 +69,7 @@
     "href": "posts/2024-08-28-Intro_to_the_Course.html",
     "title": "Intro to the Course",
     "section": "",
-    "text": "Click here to open the slides (PDF)."
+    "text": "Click here to open the slides (PDF).\n\n\nRstudio Cheatsheets: https://posit.co/resources/cheatsheets/"
   },
   {
     "objectID": "assignments/participation.html",
@@ -131,7 +131,7 @@
     "href": "course/schedule.html",
     "title": "DATA606 - Statistics and Probability",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here. Meetups start at 8:00pm.\nClick here to join the meetups.\n\n\n\n\n\n\n\n\n\nDate\nTopic\nSlides\nVideo\n\n\n\n\nWed, Aug 28\nIntro to the Course\n    \n\n\n\nWed, Sep 04\nIntro to Data\n\n\n\n\nWed, Sep 11\nSummarizing Data Part 1\n\n\n\n\nWed, Sep 18\nSummarizing Data Part 2\n\n\n\n\nWed, Sep 25\nProbability\n\n\n\n\nWed, Oct 02\nDistributions\n\n\n\n\nWed, Oct 09\nFoundation for Inference\n\n\n\n\nWed, Oct 16\nInference for Categorical Data\n\n\n\n\nWed, Oct 23\nInference for Numerical Data\n\n\n\n\nWed, Oct 30\nLinear Regression\n\n\n\n\nWed, Nov 06\nMaximum Likelihood Estimation\n\n\n\n\nWed, Nov 13\nMultiple Regression\n\n\n\n\nWed, Nov 20\nPredictive Modeling\n\n\n\n\nWed, Nov 27\nNO MEETUP - Thanksgiving\n\n\n\n\nWed, Dec 04\nBayesian Analysis\n\n\n\n\nWed, Dec 11\nFinal Meetup",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses, with all changes documented here. Meetups start at 8:00pm.\nClick here to join the meetups.\n\n\n\n\n\n\n\n\n\nDate\nTopic\nSlides\nVideo\n\n\n\n\nWed, Aug 28\nIntro to the Course\n    \n \n\n\nWed, Sep 04\nIntro to Data\n\n\n\n\nWed, Sep 11\nSummarizing Data Part 1\n\n\n\n\nWed, Sep 18\nSummarizing Data Part 2\n\n\n\n\nWed, Sep 25\nProbability\n\n\n\n\nWed, Oct 02\nDistributions\n\n\n\n\nWed, Oct 09\nFoundation for Inference\n\n\n\n\nWed, Oct 16\nInference for Categorical Data\n\n\n\n\nWed, Oct 23\nInference for Numerical Data\n\n\n\n\nWed, Oct 30\nLinear Regression\n\n\n\n\nWed, Nov 06\nMaximum Likelihood Estimation\n\n\n\n\nWed, Nov 13\nMultiple Regression\n\n\n\n\nWed, Nov 20\nPredictive Modeling\n\n\n\n\nWed, Nov 27\nNO MEETUP - Thanksgiving\n\n\n\n\nWed, Dec 04\nBayesian Analysis\n\n\n\n\nWed, Dec 11\nFinal Meetup",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -204,7 +204,7 @@
     "href": "course/calendar.html",
     "title": "DATA606 - Statistics and Probability",
     "section": "",
-    "text": "Note: Schedule is subject to change. Last updated June 30, 2024 10:55AM.\nCUNY SPS Academic Calendar\n\n\n\n\nClick here to import the course calendar into your calendar application"
+    "text": "Note: Schedule is subject to change. Last updated August 28, 2024 09:39PM.\nCUNY SPS Academic Calendar\n\n\n\n\nClick here to import the course calendar into your calendar application"
   },
   {
     "objectID": "assignments/labs.html",

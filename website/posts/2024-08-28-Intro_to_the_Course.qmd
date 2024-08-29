@@ -11,7 +11,8 @@ image: "2024-08-28-Intro_to_the_Course.png"
 
 [Click here](/slides/00-Intro_to_Course.html#1) to open the slides ([PDF](/slides/00-Intro_to_Course.pdf)).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zS8AQP0Gd_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+Rstudio Cheatsheets: [https://posit.co/resources/cheatsheets/](https://posit.co/resources/cheatsheets/)  
 
 
