@@ -1,0 +1,17 @@
+---
+title: "Intro to Data"
+author: "Jason Bryer and Angela Lui"
+date: 2024-09-03
+draft: false
+description: "Slides and recording for the *Intro to Data* meetup."
+categories: ["Meetups"]
+image: "2024-09-04-Intro_to_Data.png"
+---
+
+
+[Click here](/slides/01-Intro_to_Data.html#1) to open the slides ([PDF](/slides/01-Intro_to_Data.pdf)).
+
+
+
+
+

@@ -2,7 +2,7 @@
 title: "Intro to Data"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
 author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "August 28, 2024"
+date: "September 4, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -37,19 +37,11 @@ class: center, middle, inverse, title-slide
 ### `r metadata$author`
 ### `r metadata$date`
 
----
-# Announcements
-
-* Lab 1 is due Tuesday.
-	
-* Labs - When submitting the labs, you can submit just add your answers to the existing document (i.e. you can leave all the text there so you have all the content together).
-
-* Link to RStudio cheat sheets: https://rstudio.com/resources/cheatsheets/
 
 ---
 # Familiarity with Statistical Topics `r hexes(c('googlesheets4','likert'))`
 
-```{r, echo = FALSE, cache = TRUE, message = FALSE, warning = FALSE}
+```{r, echo = FALSE, cache = FALSE, message = FALSE, warning = FALSE}
 library(googlesheets4)
 
 results <- googlesheets4::read_sheet(formative_assessmnet_results) %>% as.data.frame()

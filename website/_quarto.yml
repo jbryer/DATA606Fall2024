@@ -3,13 +3,13 @@ project:
   output-dir: "../docs/"
 
 website:
-  announcement: 
-    # content: "The first meetup will be at 8:00pm on Wednesday, August 28th. Find the link to join on the schedule page."
-    content: "There was an error with the Slack invite link in Brightspace. [Click here](https://join.slack.com/t/data606fall2024/shared_invite/zt-2pkj7i0kz-lYHZ67EQIDPSzsclNL6VFA) to join the Slack channel."
-    # position: below-navbar # above-navbar or below-navbar
-    icon: slack #info-circle # https://icons.getbootstrap.com
-    dismissable: false
-    type: warning # primary, secondary, success, danger, warning, info, light, dark
+  # announcement: 
+  #   # content: "The first meetup will be at 8:00pm on Wednesday, August 28th. Find the link to join on the schedule page."
+  #   content: "There was an error with the Slack invite link in Brightspace. [Click here](https://join.slack.com/t/data606fall2024/shared_invite/zt-2pkj7i0kz-lYHZ67EQIDPSzsclNL6VFA) to join the Slack channel."
+  #   # position: below-navbar # above-navbar or below-navbar
+  #   icon: slack #info-circle # https://icons.getbootstrap.com
+  #   dismissable: false
+  #   type: warning # primary, secondary, success, danger, warning, info, light, dark
 
   page-navigation: false
   title: "DATA 505 Fall 2024"
