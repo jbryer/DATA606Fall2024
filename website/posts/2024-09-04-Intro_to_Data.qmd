@@ -1,7 +1,7 @@
 ---
 title: "Intro to Data"
 author: "Jason Bryer and Angela Lui"
-date: 2024-09-03
+date: 2024-09-04
 draft: false
 description: "Slides and recording for the *Intro to Data* meetup."
 categories: ["Meetups"]
@@ -11,7 +11,9 @@ image: "2024-09-04-Intro_to_Data.png"
 
 [Click here](/slides/01-Intro_to_Data.html#1) to open the slides ([PDF](/slides/01-Intro_to_Data.pdf)).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/R9NtaDEBOgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
+[Generalization and what to do with a non-representative sample](https://statmodeling.stat.columbia.edu/2021/07/16/literary-digest/)  
+[Roosevelt Predicted to Win: Revisiting the 1936 Literary Digest Poll](https://www.degruyter.com/document/doi/10.1515/spp-2016-0006/html)  
+[Common statistical tests are linear models ](https://lindeloev.github.io/tests-as-linear/)
 
