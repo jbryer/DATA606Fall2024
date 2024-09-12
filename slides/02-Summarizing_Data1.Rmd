@@ -1,8 +1,8 @@
 ---
 title: "Summarizing Data Part 1"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "February 7, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "September 11, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -109,6 +109,8 @@ See Wickham (2014) [Tidy data](https://vita.had.co.nz/papers/tidy-data.html).
 knitr::include_graphics('images/DataTypesConceptModel.png')
 ```
 
+
+
 ---
 # Data Types / Descriptives / Visualizations
 
@@ -122,6 +124,33 @@ Ordinal      | contingency table, proportional table, median | bar plot
 Two quantitative | correlation                               | scatter plot
 Two qualitative  | contingency table, chi-squared            | mosaic plot, bar plot
 Quantitative & Qualitative | grouped summaries, ANOVA, t-test | box plot
+
+---
+# Statistics
+
+.pull-left[
+When describing a quantitative variable we are often interested in two things:
+
+1. A measure of center
+2. A measure of spread
+
+The most common measures we will use in this class is the mean and median.
+
+$$ \bar{x} = \frac{\Sigma(x_i)}{n} $$
+
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+
+]
+.pull-right[
+
+Note that in the numerator for the variance calculation we square the differences (also known as deviations). Squaring terms is common practice in statistics that serves two purposes:
+
+1. It makes all the values positive.
+
+2. It weighs observations that are further from the center more.
+
+]
+
 
 ---
 # Variance
@@ -433,12 +462,13 @@ legosets %>%
 
 
 ---
+class: font90
 # Pipes `%>%` and `|>` `r hexes(c('magrittr'))`
 
 <img src='images/magrittr_pipe.jpg' align='right' width='200' />
 
 .font90[
-The pipe operator (`%>%`) introduced with the `magrittr` R package allows for the chaining of R operations. Base R has now added their own pipe operator (`|>`). They take the output from the left-hand side and passes it as the first parameter to the function on the right-hand side.
+The pipe operator (`%>%`) introduced with the `magrittr` R package allows for the chaining of R operations. As of version 4.1, R now has a native pipe operator (`|>`). They take the output from the left-hand side and passes it as the first parameter to the function on the right-hand side.
 ]
 
 .pull-left[
@@ -506,7 +536,7 @@ mylego <- legosets %>% filter(themeGroup == 'Educational' & year > 2015)
 ### Base R
 
 ```{r, eval=FALSE}
-mylego <- legosets[legosets$themeGroups == 'Educaitonal' & legosets$year > 2015,]
+mylego <- legosets[legosets$themeGroup == 'Educational' & legosets$year > 2015,]
 ```
 
 <hr />

@@ -1,0 +1,17 @@
+---
+title: "Summarizing Data Part 1"
+author: "Jason Bryer and Angela Lui"
+date: 2024-09-11
+draft: false
+description: "Slides and recording for the *Summarizing Data Part 1* meetup."
+categories: ["Meetups"]
+image: "2024-09-11-Summarizing_Data_Part_1.png"
+---
+
+
+[Click here](/slides/02-Summarizing_Data1.html#1) to open the slides ([PDF](/slides/02-Summarizing_Data1.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QT0O3VM92iM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+

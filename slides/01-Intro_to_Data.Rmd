@@ -1,7 +1,7 @@
 ---
 title: "Intro to Data"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstorm, Ph.D.
 date: "September 4, 2024"
 output:
   xaringan::moon_reader:
