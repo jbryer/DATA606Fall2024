@@ -1,11 +1,11 @@
 ---
-title: "Intro to Data"
+title: "Debugging"
 author: "George Hagstrom"
-date: 2024-09-04
+date: 2024-09-18
 draft: false
 description: "Reproducible Examples in Debugging"
 categories: ["Meetups"]
-image: "2024-09-04-Debugging.png"
+image: "2024-09-18-Debugging.png"
 ---
 
 ```{r, echo=FALSE}
@@ -13,7 +13,7 @@ source('../../config.R')
 meetup_image(
 	title = 'Debugging',
 	date = 'September 4, 2014',
-	out_file = paste0('2024-09-04-Debugging.png')
+	out_file = paste0('2024-09-18-Debugging.png')
 )
 ```
 
