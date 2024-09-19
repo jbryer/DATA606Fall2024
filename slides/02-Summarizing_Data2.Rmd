@@ -1,8 +1,8 @@
 ---
 title: "Summarizing Data Part 2"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "February 14, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "September 18, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -253,20 +253,6 @@ summary(l24)
 
 ```{r, fig.width=8}
 plot(l24)
-```
-
----
-# `likert` Plots  `r hexes(c('likert'))`
-
-```{r, fig.width=8}
-plot(l24, type='heat')
-```
-
----
-# `likert` Plots  `r hexes(c('likert'))`
-
-```{r, fig.width=4, fig.height=7}
-plot(l24, type='density')
 ```
 
 

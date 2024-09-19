@@ -1,0 +1,22 @@
+---
+title: "Intro to Data"
+author: "George Hagstrom"
+date: 2024-09-04
+draft: false
+description: "Reproducible Examples in Debugging"
+categories: ["Meetups"]
+image: "2024-09-04-Debugging.png"
+---
+
+```{r, echo=FALSE}
+source('../../config.R')
+meetup_image(
+	title = 'Debugging',
+	date = 'September 4, 2014',
+	out_file = paste0('2024-09-04-Debugging.png')
+)
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bo5qHhYzRSA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+This talk by Jenny Bryan from RStudio::conf(2020) titled *Object of type ‘closure’ is not subsettable* is also very good about the challenges of debugging code.
