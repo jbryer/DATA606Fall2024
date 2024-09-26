@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jason Bryer and Angela Lui">
+<meta name="dcterms.date" content="2024-09-25">
+<meta name="description" content="Slides and recording for the Probability meetup.">
 
-<title>Announcements – DATA 505 Fall 2024</title>
+<title>Probability – DATA 505 Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,71 +70,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<link href="../fullcalendar-lib/main.css" rel="stylesheet">
+<script type="text/javascript" src="../fullcalendar-lib/main.js"></script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<link href="./fullcalendar-lib/main.css" rel="stylesheet">
-<script type="text/javascript" src="./fullcalendar-lib/main.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Announcements – DATA 505 Fall 2024">
-<meta property="og:description" content="DATA 606 - Statistics and Probability - CUNY School of Professional Studies">
+<meta property="og:title" content="Probability – DATA 505 Fall 2024">
+<meta property="og:description" content="Slides and recording for the Probability meetup.">
+<meta property="og:image" content="https://fall2024.data606.net/posts/2024-09-25-Probability.png">
 <meta property="og:site_name" content="DATA 505 Fall 2024">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 </head>
 
 <body class="nav-sidebar docked fullcontent">
@@ -145,7 +91,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Announcements</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Probability</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,11 +105,11 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/course_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/course_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="./course/schedule.html" title="Schedule" class="quarto-navigation-tool px-1" aria-label="Schedule"><i class="bi bi-calendar-check"></i></a>
+    <a href="../course/schedule.html" title="Schedule" class="quarto-navigation-tool px-1" aria-label="Schedule"><i class="bi bi-calendar-check"></i></a>
     <a href="https://github.com/jbryer/DATA606Fall2024" title="Github" class="quarto-navigation-tool px-1" aria-label="Github" target="_blank"><i class="bi bi-github"></i></a>
     <a href="https://data606fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack" target="_blank"><i class="bi bi-slack"></i></a>
     <div class="dropdown">
@@ -199,7 +145,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Announcements</span></a>
   </div>
 </li>
@@ -214,37 +160,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/instructors.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/instructors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Instructors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/textbooks.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/textbooks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Textbooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/software.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/software.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Software</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course/materials.html" class="sidebar-item-text sidebar-link">
+  <a href="../course/materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materials</span></a>
   </div>
 </li>
@@ -261,37 +207,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/daacs.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/daacs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DAACS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/participation.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/participation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Participation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/labs.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/labs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Labs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/project.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/exams.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/exams.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exams</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/homework.html" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/homework.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework</span></a>
   </div>
 </li>
@@ -308,61 +254,61 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter1.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">1 - Intro to Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter2.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2 - Summarizing Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter3.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3 - Probability</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter4.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4 - Distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter5.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">5 - Foundations for Inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter6.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">6 - Inference for Categorical Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter7.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">7 - Inference for Numerical Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter8.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">8 - Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/chapter9.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/chapter9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">9 - Multiple and Logistic Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/bayesian.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/bayesian.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayesian</span></a>
   </div>
 </li>
@@ -379,14 +325,34 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Announcements</h1>
-</div>
+<h1 class="title">Probability</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Meetups</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Slides and recording for the <em>Probability</em> meetup.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jason Bryer and Angela Lui </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -396,193 +362,13 @@ window.Quarto = {
 </header>
 
 
-<p>Be sure to check this page regularly for updates. In addition to periodic updates about the course, slides and recordings of the weekly meetups will be posted here.</p>
+<p><a href="../slides/03-Probability.html#1">Click here</a> to open the slides (<a href="../slides/03-Probability.pdf">PDF</a>).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/daeJXXVoiyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Meetups" data-listing-date-sort="1727236800000" data-listing-file-modified-sort="1727315368331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="thumbnail">
-<p><a href="./posts/2024-09-25-Probability.html" class="no-external"></a></p><a href="./posts/2024-09-25-Probability.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-09-25-Probability.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-09-25-Probability.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-09-25-Probability.html" class="no-external">Probability</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-09-25-Probability.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-09-25-Probability.html" class="no-external">Slides and recording for the <em>Probability</em> meetup.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-09-25-Probability.html" class="no-external">
-<div class="listing-date">
-Sep 25, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Meetups" data-listing-date-sort="1726632000000" data-listing-file-modified-sort="1727315368169" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="thumbnail">
-<p><a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external"></a></p><a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-09-18-Summarizing_Data_Part_2.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external">Summarizing Data Part 2</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external">Slides and recording for the <em>Summarizing Data Part 2</em> meetup.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-09-18-Summarizing_Data_Part_2.html" class="no-external">
-<div class="listing-date">
-Sep 18, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Meetups" data-listing-date-sort="1726632000000" data-listing-file-modified-sort="1726714991611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="48">
-<div class="thumbnail">
-<p><a href="./posts/2024-09-18-Debugging.html" class="no-external"></a></p><a href="./posts/2024-09-18-Debugging.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-09-18-Debugging.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-09-18-Debugging.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-09-18-Debugging.html" class="no-external">Debugging</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-09-18-Debugging.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-09-18-Debugging.html" class="no-external">Reproducible Examples in Debugging</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-09-18-Debugging.html" class="no-external">
-<div class="listing-date">
-Sep 18, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Meetups" data-listing-date-sort="1726027200000" data-listing-file-modified-sort="1727315368053" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<div class="thumbnail">
-<p><a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external"></a></p><a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-09-11-Summarizing_Data_Part_1.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external">Summarizing Data Part 1</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external">Slides and recording for the <em>Summarizing Data Part 1</em> meetup.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-09-11-Summarizing_Data_Part_1.html" class="no-external">
-<div class="listing-date">
-Sep 11, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Meetups" data-listing-date-sort="1725422400000" data-listing-file-modified-sort="1727315367857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="48">
-<div class="thumbnail">
-<p><a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external"></a></p><a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-09-04-Intro_to_Data.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external">Intro to Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external">Slides and recording for the <em>Intro to Data</em> meetup.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-09-04-Intro_to_Data.html" class="no-external">
-<div class="listing-date">
-Sep 4, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Meetups" data-listing-date-sort="1724817600000" data-listing-file-modified-sort="1727315367708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<div class="thumbnail">
-<p><a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external"></a></p><a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external">
-<p><img loading="lazy" src="./posts/2024-08-28-Intro_to_the_Course.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external">Intro to the Course</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external">Slides and recording for the <em>Intro to the Course</em> meetup.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-08-28-Intro_to_the_Course.html" class="no-external">
-<div class="listing-date">
-Aug 28, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1719633600000" data-listing-file-modified-sort="1724857769922" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="290">
-<div class="thumbnail">
-<p><a href="./posts/2024-08-28-Welcome.html" class="no-external"></a></p><a href="./posts/2024-08-28-Welcome.html" class="no-external">
-<p><img loading="lazy" src="./posts/welcome.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/2024-08-28-Welcome.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-08-28-Welcome.html" class="no-external">Welcome to DATA606!</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-08-28-Welcome.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-08-28-Welcome.html" class="no-external">Important information on how to get started with this course. Please read this post carefully.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-08-28-Welcome.html" class="no-external">
-<div class="listing-date">
-Jun 29, 2024
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1152,4 +938,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jbryer/DATA606Fall2024/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jbryer/DATA606Fall2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jbryer/DATA606Fall2024/edit/main/posts/2024-09-25-Probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jbryer/DATA606Fall2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

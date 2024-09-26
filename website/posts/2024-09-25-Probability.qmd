@@ -1,0 +1,17 @@
+---
+title: "Probability"
+author: "Jason Bryer and Angela Lui"
+date: 2024-09-25
+draft: false
+description: "Slides and recording for the *Probability* meetup."
+categories: ["Meetups"]
+image: "2024-09-25-Probability.png"
+---
+
+
+[Click here](/slides/03-Probability.html#1) to open the slides ([PDF](/slides/03-Probability.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/daeJXXVoiyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
