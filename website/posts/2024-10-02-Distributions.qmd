@@ -1,0 +1,17 @@
+---
+title: "Distributions"
+author: "Jason Bryer and Angela Lui"
+date: 2024-10-02
+draft: false
+description: "Slides and recording for the *Distributions* meetup."
+categories: ["Meetups"]
+image: "2024-10-02-Distributions.png"
+---
+
+
+[Click here](/slides/04-Distributions.html#1) to open the slides ([PDF](/slides/04-Distributions.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/43RnjttGAyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
