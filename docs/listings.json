@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2024-10-11-Bootstrap_vs_Standard_Error.html",
       "/posts/2024-10-09-Foundation_for_Inference.html",
       "/posts/2024-10-02-Distributions.html",
       "/posts/2024-09-25-Probability.html",

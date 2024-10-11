@@ -26,99 +26,103 @@
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-08-28-Intro_to_the_Course.html</loc>
-    <lastmod>2024-10-10T01:45:04.158Z</lastmod>
+    <lastmod>2024-10-11T18:37:26.310Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-10-09-Foundation_for_Inference.html</loc>
-    <lastmod>2024-10-10T01:45:05.040Z</lastmod>
+    <lastmod>2024-10-11T18:37:27.762Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-08-28-Welcome.html</loc>
     <lastmod>2024-08-28T15:09:29.922Z</lastmod>
   </url>
   <url>
-    <loc>https://fall2024.data606.net/posts/2024-09-25-Probability.html</loc>
-    <lastmod>2024-10-10T01:45:04.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/posts/2024-09-18-Summarizing_Data_Part_2.html</loc>
-    <lastmod>2024-10-10T01:45:04.597Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/homework_ungraded.html</loc>
-    <lastmod>2024-06-29T21:58:09.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/project.html</loc>
-    <lastmod>2024-06-29T22:01:51.315Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/labs.html</loc>
-    <lastmod>2024-06-29T21:58:16.677Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/calendar.html</loc>
-    <lastmod>2024-06-29T01:07:55.033Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/textbooks.html</loc>
-    <lastmod>2024-06-29T21:47:31.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/software.html</loc>
-    <lastmod>2024-08-19T14:45:01.375Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/instructors.html</loc>
-    <lastmod>2024-08-19T14:30:11.103Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/overview.html</loc>
-    <lastmod>2024-06-28T20:14:34.409Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/materials.html</loc>
-    <lastmod>2024-09-05T22:27:44.829Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/syllabus.html</loc>
-    <lastmod>2024-06-28T20:31:21.536Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/course/schedule.html</loc>
-    <lastmod>2024-08-29T01:44:59.043Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/homework.html</loc>
-    <lastmod>2024-06-29T22:02:25.260Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/exams.html</loc>
-    <lastmod>2024-06-29T21:58:04.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/daacs.html</loc>
-    <lastmod>2024-06-29T21:59:52.334Z</lastmod>
-  </url>
-  <url>
-    <loc>https://fall2024.data606.net/assignments/participation.html</loc>
-    <lastmod>2024-06-29T21:58:20.986Z</lastmod>
+    <loc>https://fall2024.data606.net/posts/2024-10-02-Distributions.html</loc>
+    <lastmod>2024-10-11T18:37:27.523Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-09-18-Debugging.html</loc>
     <lastmod>2024-09-19T03:03:11.611Z</lastmod>
   </url>
   <url>
-    <loc>https://fall2024.data606.net/posts/2024-10-02-Distributions.html</loc>
-    <lastmod>2024-10-10T01:45:04.906Z</lastmod>
+    <loc>https://fall2024.data606.net/assignments/participation.html</loc>
+    <lastmod>2024-06-29T21:58:20.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/daacs.html</loc>
+    <lastmod>2024-06-29T21:59:52.334Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/exams.html</loc>
+    <lastmod>2024-06-29T21:58:04.061Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/homework.html</loc>
+    <lastmod>2024-06-29T22:02:25.260Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/schedule.html</loc>
+    <lastmod>2024-08-29T01:44:59.043Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/syllabus.html</loc>
+    <lastmod>2024-06-28T20:31:21.536Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/materials.html</loc>
+    <lastmod>2024-09-05T22:27:44.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/overview.html</loc>
+    <lastmod>2024-06-28T20:14:34.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/instructors.html</loc>
+    <lastmod>2024-08-19T14:30:11.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/software.html</loc>
+    <lastmod>2024-08-19T14:45:01.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/textbooks.html</loc>
+    <lastmod>2024-06-29T21:47:31.130Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/course/calendar.html</loc>
+    <lastmod>2024-06-29T01:07:55.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/labs.html</loc>
+    <lastmod>2024-06-29T21:58:16.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/project.html</loc>
+    <lastmod>2024-06-29T22:01:51.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/assignments/homework_ungraded.html</loc>
+    <lastmod>2024-06-29T21:58:09.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/posts/2024-09-18-Summarizing_Data_Part_2.html</loc>
+    <lastmod>2024-10-11T18:37:27.081Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/posts/2024-09-25-Probability.html</loc>
+    <lastmod>2024-10-11T18:37:27.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fall2024.data606.net/posts/2024-10-11-Bootstrap_vs_Standard_Error.html</loc>
+    <lastmod>2024-10-11T18:41:19.713Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-09-11-Summarizing_Data_Part_1.html</loc>
-    <lastmod>2024-10-10T01:45:04.480Z</lastmod>
+    <lastmod>2024-10-11T18:37:26.948Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/posts/2024-09-04-Intro_to_Data.html</loc>
-    <lastmod>2024-10-10T01:45:04.364Z</lastmod>
+    <lastmod>2024-10-11T18:37:26.559Z</lastmod>
   </url>
   <url>
     <loc>https://fall2024.data606.net/chapters/chapter2.html</loc>

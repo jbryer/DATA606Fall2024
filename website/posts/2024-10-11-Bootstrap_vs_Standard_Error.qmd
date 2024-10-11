@@ -1,0 +1,238 @@
+---
+title: "Bootstrap vs Standard Error Confidence Intervals"
+author: "Jason Bryer"
+date: 2024-10-11
+draft: false
+description: "Comparing the confidence intervals using standard error and the bootstrap."
+categories: ["Miscellaneous"]
+image: "2024-10-11-Bootstrap_vs_Standard_Error.png"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source('../../config.R')
+meetup_image(out_file = '2024-10-11-Bootstrap_vs_Standard_Error.png',
+			 title = 'Bootstrap vs Standard Error Confidence Intervals',
+			 date = ' ')
+```
+
+During the October 9th class a student asked whether bootstrap confidence intervals were more robust than confidence intervals estimated using the standard error (i.e. $SE = \frac{s}{\sqrt{n}}$). In order to answer this question I wrote a function to simulate taking a bunch of random samples from a population, calculate the confidence interval for that sample using the standard error approach (the *t* distribution is used by default, see the `cv` parameter. To use the normal distribution, for example, set `cv = 1.96`.), and then also calculating a confidence interval using the boostrap.
+
+```{r simulation-function, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+
+#' Simulate random samples to estimate confidence intervals and bootstrap
+#' estimates.
+#'
+#' @param pop a numeric vector representing the population.
+#' @param n sample size for each random sample from the population.
+#' @param n_samples the number of random samples.
+#' @param n_boot number of bootstrap samples to take for each sample.
+#' @param seed a seed to use for the random process.
+#' @param cv critical value to use for calculating confidence intervals.
+#' @return a data.frame with the sample and bootstrap mean and confidence
+#'        intervals along with a logical variable indicating whether a Type I
+#'        error would have occurred with that sample.
+bootstrap_clt_simulation <- function(
+		pop,
+		n = 30,
+		n_samples = 500,
+		n_boot = 500,
+		cv = abs(qt(0.025, df = n - 1)),
+		seed,
+		verbose = interactive()
+) {
+	if(missing(seed)) {
+		seed <- sample(100000)
+	}
+	results <- data.frame(
+		seed = 1:n_samples,
+		samp_mean = numeric(n_samples),
+		samp_se = numeric(n_samples),
+		samp_ci_low = numeric(n_samples),
+		samp_ci_high = numeric(n_samples),
+		samp_type1 = logical(n_samples),
+		boot_mean = numeric(n_samples),
+		boot_ci_low = numeric(n_samples),
+		boot_ci_high = numeric(n_samples),
+		boot_type1 = logical(n_samples)
+	)
+	if(verbose) {
+		pb <- txtProgressBar(min = 0, max = n_samples, style = 3)
+	}
+	for(i in 1:n_samples) {
+		if(verbose) {
+			setTxtProgressBar(pb, i)
+		}
+		set.seed(seed + i)
+		samp <- sample(pop, size = n)
+		boot_samp <- numeric(n_boot)
+		for(j in 1:n_boot) {
+			boot_samp[j] <- sample(samp, size = length(samp), replace = TRUE) |>
+				mean()
+		}
+		results[i,]$seed <- seed + i
+		results[i,]$samp_mean <- mean(samp)
+		results[i,]$samp_se <- sd(samp) / sqrt(length(samp))
+		results[i,]$samp_ci_low <- mean(samp) - cv * results[i,]$samp_se
+		results[i,]$samp_ci_high <- mean(samp) + cv * results[i,]$samp_se
+		results[i,]$samp_type1 <- results[i,]$samp_ci_low > mean(pop) |
+			mean(pop) > results[i,]$samp_ci_high
+		results[i,]$boot_mean <- mean(boot_samp)
+		results[i,]$boot_ci_low <- mean(boot_samp) - cv * sd(boot_samp)
+		results[i,]$boot_ci_high <- mean(boot_samp) + cv * sd(boot_samp)
+		results[i,]$boot_type1 <- results[i,]$boot_ci_low > mean(pop) |
+			mean(pop) > results[i,]$boot_ci_high
+	}
+	if(verbose) {
+		close(pb)
+	}
+	return(results)
+}
+```
+
+**Uniform distribution for the population**
+
+Let's start with a uniform distribution for our population.
+
+```{r, cache=TRUE, message=FALSE}
+pop_unif <- runif(1e5, 0, 1)
+ggplot(data.frame(x = pop_unif), aes(x = x)) + geom_density()
+```
+
+The mean of the population is `r mean(pop_unif)`. We can now simulate samples and their corresponding bootstrap estimates.
+
+```{r, cache=TRUE, message=FALSE}
+results_unif <- bootstrap_clt_simulation(pop = pop_unif, seed = 42, verbose = FALSE)
+```
+
+`r mean(results_unif$samp_type1) * 100`% of our samples did not contain the population mean in the confidence interval (i.e. Type I error rate) compared to `r `mean(results_unif$boot_type1) * 100`% of the bootstrap estimates. The following table compares the Type I errors for each sample compared to the bootstrap estiamted from that sample.
+
+```{r}
+tab <- table(results_unif$samp_type1, results_unif$boot_type1, useNA = 'ifany')
+tab
+```
+
+In general committing a type I error is the same regardless of method, though there were `r tab[1,2]` instances where the bootstrap would have led to a type I error rate where the standard error approach would not.
+
+The following plots show the relationship between the estimated mean (left) and condifence interval width (right) for each sample and its corresponding bootstrap.
+
+```{r}
+#| layout-ncol: 2
+#| echo: true
+#| out-width: "100%"
+
+results_unif |>
+	ggplot(aes(x = samp_mean, y = boot_mean)) +
+	geom_vline(xintercept = mean(pop_unif), color = 'blue') +
+	geom_hline(yintercept = mean(pop_unif), color = 'blue') +
+	geom_abline() +
+	geom_point() +
+	ggtitle("Sample mean vs bootstrap mean")
+
+results_unif |>
+	dplyr::mutate(samp_ci_width = samp_ci_high - samp_ci_low,
+				  boot_ci_width = boot_ci_high - boot_ci_low) |>
+	ggplot(aes(x = samp_ci_width, y = boot_ci_width)) +
+	geom_abline() +
+	geom_point() +
+	ggtitle('Sample vs boostrap confidence interval width')
+
+```
+
+**Skewed distribution for the population**
+
+We will repeat the same analysis using a positively skewed distribution.
+
+```{r, cache=TRUE, message=FALSE}
+pop_skewed <- rnbinom(1e5, 3, .5)
+ggplot(data.frame(x = pop_skewed), aes(x = x)) + geom_density(bw = 0.75)
+```
+
+The mean of the population for this distribution is `r mean(pop_skewed)`
+
+```{r}
+results_skewed <- bootstrap_clt_simulation(pop = pop_skewed, seed = 42, verbose = FALSE)
+mean(results_skewed$samp_type1) # Percent of samples with Type I error
+mean(results_skewed$boot_type1) # Percent of bootstrap estimates with Type I error
+# CLT vs Bootstrap Type I error rate
+table(results_skewed$samp_type1, results_skewed$boot_type1, useNA = 'ifany')
+```
+
+
+```{r}
+#| layout-ncol: 2
+#| echo: true
+#| out-width: "100%"
+
+results_skewed |>
+	ggplot(aes(x = samp_mean, y = boot_mean)) +
+	geom_vline(xintercept = mean(pop_skewed), color = 'blue') +
+	geom_hline(yintercept = mean(pop_skewed), color = 'blue') +
+	geom_abline() +
+	geom_point() +
+	ggtitle("Sample mean vs bootstrap mean")
+
+results_skewed |>
+	dplyr::mutate(samp_ci_width = samp_ci_high - samp_ci_low,
+				  boot_ci_width = boot_ci_high - boot_ci_low) |>
+	ggplot(aes(x = samp_ci_width, y = boot_ci_width)) +
+	geom_abline() +
+	geom_point() +
+	ggtitle('Sample vs boostrap confidence interval width')
+
+```
+
+We can see the results are very similar to that of the uniform distirubtion. Exploring the one case where the bootstrap would have resulted in a Type I error where the standard error approach would not reveals that it is very close with the difference being less than 0.1.
+
+```{r}
+results_differ <- results_skewed |>
+	dplyr::filter(!samp_type1 & boot_type1)
+results_differ
+```
+
+```{r}
+set.seed(results_differ[1,]$seed)
+samp <- sample(pop_skewed, size = 30)
+boot_samp <- numeric(500)
+for(j in 1:500) {
+	boot_samp[j] <- sample(samp, size = length(samp), replace = TRUE) |>
+		mean()
+}
+cv = abs(qt(0.025, df = 30 - 1))
+mean(pop_skewed)
+ci <- c(mean(samp) - cv * sd(samp) / sqrt(30), mean(samp) + cv * sd(samp) / sqrt(30))
+ci
+mean(pop_skewed) < ci[1] | mean(pop_skewed) > ci[2]
+ci_boot <- c(mean(boot_samp) - cv * sd(boot_samp), mean(boot_samp) + cv * sd(boot_samp))
+ci_boot
+mean(pop_skewed) < ci_boot[1] | mean(pop_skewed) > ci_boot[2]
+```
+
+**Adding an outlier**
+
+Let's consider a sample that forces the largest value from the population to be in the sample.
+
+
+```{r}
+set.seed(2112)
+samp_outlier <- c(sample(pop_skewed, size = 29), max(pop_skewed))
+boot_samp <- numeric(500)
+for(j in 1:500) {
+	boot_samp[j] <- sample(samp, size = length(samp), replace = TRUE) |>
+		mean()
+}
+
+ci <- c(mean(samp_outlier) - cv * sd(samp_outlier) / sqrt(30), mean(samp_outlier) + cv * sd(samp_outlier) / sqrt(30))
+ci
+mean(pop_skewed) < ci[1] | mean(pop_skewed) > ci[2]
+ci_boot <- c(mean(boot_samp) - cv * sd(boot_samp), mean(boot_samp) + cv * sd(boot_samp))
+ci_boot
+mean(pop_skewed) < ci_boot[1] | mean(pop_skewed) > ci_boot[2]
+```
+
+In this example we do see that the presense of the outlier does have a bigger impact on the confidence interval with the bootstrap confidence interval being much smaller.
+
+
