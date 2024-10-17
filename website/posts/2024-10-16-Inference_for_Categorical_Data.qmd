@@ -1,0 +1,17 @@
+---
+title: "Inference for Categorical Data"
+author: "Jason Bryer and Angela Lui"
+date: 2024-10-16
+draft: false
+description: "Slides and recording for the *Inference for Categorical Data* meetup."
+categories: ["Meetups"]
+image: "2024-10-16-Inference_for_Categorical_Data.png"
+---
+
+
+[Click here](/slides/06-Inference_for_Categorical_Data.html#1) to open the slides ([PDF](/slides/06-Inference_for_Categorical_Data.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cYXufQwjm5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+

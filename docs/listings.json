@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2024-10-16-Inference_for_Categorical_Data.html",
       "/posts/2024-10-11-Bootstrap_vs_Standard_Error.html",
       "/posts/2024-10-09-Foundation_for_Inference.html",
       "/posts/2024-10-02-Distributions.html",
