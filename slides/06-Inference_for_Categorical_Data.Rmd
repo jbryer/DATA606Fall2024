@@ -136,6 +136,62 @@ This is true given the following conditions:
 * at least 10 successes and 10 failures
 
 ---
+class: font80
+# Simulating the CLT
+
+.pull-left[
+Let's consider a population of 1,000,000 where the true proportion is 0.85.
+
+```{r}
+pop_prop <- 0.85
+N <- 1000000
+pop <- c(rep(0, N * (1 - pop_prop)), 
+		 rep(1, N * pop_prop))
+```
+
+We can estimate the sampling distribution by taking 1,000 random samples of size 30.
+
+```{r}
+n <- 670
+samp_dist <- numeric(1000)
+for(i in 1:length(samp_dist)) {
+	samp_dist[i] <- sample(pop, size = n) |> mean()
+}
+```
+
+Calculate the standard error using one sample.
+
+```{r}
+samp_se <- sqrt((0.85 * (1 - 0.85)) / 670)
+```
+
+
+]
+.pull-right[
+
+The figure represents the sampling distribution. The blue line is from the estimated sampling distribution. The green line is from the one sample (i.e using the SE formula).
+
+```{r, warning = FALSE, echo = FALSE}
+density_out <- density(samp_dist, from = 0, to = 1)
+density_df <- data.frame(x = density_out$x,	y = density_out$y) |>
+	dplyr::mutate(area = x >= qnorm(0.025) & x <= qnorm(0.975) )
+ggplot(density_df, aes(x = x, y = y)) + 
+	geom_line() + 
+	geom_vline(xintercept = mean(samp_dist), color = 'blue') +
+	geom_errorbarh(aes(y = 0), color = 'blue',
+				   xmin = mean(samp_dist) - 1.96 * sd(samp_dist),
+				   xmax = mean(samp_dist) + 1.96 * sd(samp_dist)) +
+	geom_vline(xintercept = mean(pop), color = 'darkgreen') +
+	geom_errorbarh(aes(y = 1), color = 'darkgreen',
+				   xmin = 0.85 - 1.96 * samp_se,
+				   xmax = 0.85 + 1.96 * samp_se) +
+	xlim(c(mean(samp_dist) - 4 * sd(samp_dist), mean(samp_dist) + 4 * sd(samp_dist)))
+```
+
+]
+
+
+---
 # Back to the Survey
 
 * 571 out of 670 (85%) of Americans answered the question on experimental design correctly.

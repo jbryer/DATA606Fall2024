@@ -113,6 +113,50 @@ This is true given the following conditions:
 * at least 10 successes and 10 failures
 
 ---
+class: font80
+# Simulating the CLT
+
+.pull-left[
+Let's consider a population of 1,000,000 where the true proportion is 0.85.
+
+
+``` r
+pop_prop &lt;- 0.85
+N &lt;- 1000000
+pop &lt;- c(rep(0, N * (1 - pop_prop)), 
+		 rep(1, N * pop_prop))
+```
+
+We can estimate the sampling distribution by taking 1,000 random samples of size 30.
+
+
+``` r
+n &lt;- 670
+samp_dist &lt;- numeric(1000)
+for(i in 1:length(samp_dist)) {
+	samp_dist[i] &lt;- sample(pop, size = n) |&gt; mean()
+}
+```
+
+Calculate the standard error using one sample.
+
+
+``` r
+samp_se &lt;- sqrt((0.85 * (1 - 0.85)) / 670)
+```
+
+
+]
+.pull-right[
+
+The figure represents the sampling distribution. The blue line is from the estimated sampling distribution. The green line is from the one sample (i.e using the SE formula).
+
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
 # Back to the Survey
 
 * 571 out of 670 (85%) of Americans answered the question on experimental design correctly.
@@ -328,7 +372,7 @@ In order to determine if the `\(\chi^2\)` statistic we calculated is considered 
 
 * The chi-square distribution has just one parameter called **degrees of freedom (df)**, which influences the shape, center, and spread of the distribution.
 
-&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Degrees of freedom for a goodness of fit test
@@ -340,7 +384,7 @@ When conducting a goodness of fit test to evaluate how well the observed data fo
 For dice outcomes, `\(k = 6\)`, therefore `\(df = 6 - 1 = 5\)`
 
 
-&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 
 p-value = `\(P(\chi^2_{df = 5} &gt; 24.67)\)` is less than 0.001
 
@@ -364,7 +408,7 @@ p-value = `\(P(\chi^2_{df = 5} &gt; 24.67)\)` is less than 0.001
 * This is because the test statistic is always positive, and a higher test statistic means a stronger deviation from the null hypothesis.
 
 
-&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -417,7 +461,7 @@ mean(sampA$response)
 ```
 
 ```
-## [1] 0.554
+## [1] 0.557
 ```
 
 `\(\hat{p}\)` for the population sample, excluding group B 
@@ -428,7 +472,7 @@ mean(sampA[sampA$group == 'A',]$response)
 ```
 
 ```
-## [1] 0.5526316
+## [1] 0.5567839
 ```
 
 `\(\hat{p}\)` for group B sample
@@ -439,7 +483,7 @@ mean(sampB$response)
 ```
 
 ```
-## [1] 0.64
+## [1] 0.6
 ```
 
 ---
@@ -447,7 +491,7 @@ mean(sampB$response)
 
 
 
-&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -460,7 +504,7 @@ class: left, font140
 2. What important question remains unanswered for you?
 ]
 .pull-right[
-&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="06-Inference_for_Categorical_Data_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 https://forms.gle/ESBAdHRhzT65fW6c6
