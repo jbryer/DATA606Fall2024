@@ -1,8 +1,8 @@
 ---
 title: "Inference for Numerical Data"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "March 20, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "October 23, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -38,49 +38,6 @@ class: center, middle, inverse, title-slide
 ### `r metadata$author`
 ### `r metadata$date`
 
----
-# Midterm Results
-
-* The midterm is worth 10% of your grade.
-* We don't want to share the questions and answers but will provide feedback privately (if you ask questions) and will review questions in the next week or two.
-
-.pull-left[
-```{r, echo = FALSE, fig.height=8}
-midterm <- rbind(read.csv('../private/Midterm/DATA606 Midterm1.csv'),
-				 read.csv('../private/Midterm/DATA606 Midterm2.csv'))
-				 # read.csv('../private/Midterm/DATA606 Midterm3.csv'))
-
-scores <- midterm %>% select(paste0('Auto.Score.', 1:20)) %>%
-	mutate(Total = rowSums(across(everything())))
-
-ggplot(scores, aes(x = Total * 10)) + 
-	geom_density() + xlim(c(0, 100)) +
-	ggtitle('Distribution of midterm scores') +
-	xlab('Percent Correct')
-# ggplot(scores, aes(x = Total * 10)) + 
-# 	geom_histogram(bins = 20) + xlim(c(0, 100)) +
-# 	ggtitle('Distribution of midterm scores') +
-# 	xlab('Percent Correct')
-```
-]
-.pull-right[
-```{r, echo = FALSE, fig.height=8}
-midterm_scores <- midterm %>%
-	select(Username,
-		   # paste0('Question.', 1:20),
-		   # paste0('Answer.', 1:20),
-		   paste0('Auto.Score.', 1:20)) %>%
-	rename_with( ~ gsub('Auto.Score.', 'Question ', .x, fixed = TRUE)) %>%
-	melt(id.vars = 'Username',
-		 variable.name = 'Question',
-		 value.name = 'Correct') %>%
-	mutate(Correct = Correct == 0.5)
-
-ggplot(midterm_scores, aes(x = Correct)) + 
-	geom_bar() + facet_wrap(~ Question) +
-	ggtitle('Responses by question')
-```
-]
 
 ---
 # One Minute Paper Results
@@ -89,7 +46,6 @@ ggplot(midterm_scores, aes(x = Correct)) +
 library(googlesheets4)
 omp <- read_sheet(one_minute_paper_results)
 omp <- omp %>% dplyr::filter(Topic == 'Inference for Categorical Data (Chapter 6)')
-source('word_cloud.R')
 ```
 
 .pull-left[
