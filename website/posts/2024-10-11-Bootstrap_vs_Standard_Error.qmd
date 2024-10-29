@@ -311,9 +311,11 @@ cowplot::plot_grid(p_samp_size_se, p_boot_size_se)
 Lastly we can plot the relationship between the two standard error estimates; the correlation of which is extremely high with r = `r round(cor(results$samp_se, results$boot_se), digits = 2)`.
 
 ```{r}
-ggplot(results, aes(x = samp_se, y = boot_se)) + 
+ggplot(results, aes(x = samp_se, y = boot_se)) +
+	geom_abline() +
 	geom_point() +
 	xlab('Sample Standard Error') +
 	ylab('Boostrap Standard Error') +
-	ggtitle(paste0('Correlation between standard errors = ', round(cor(results$samp_se, results$boot_se), digits = 2)))
+	ggtitle(paste0('Correlation between standard errors = ', round(cor(results$samp_se, results$boot_se), digits = 2))) +
+	coord_equal()
 ```
