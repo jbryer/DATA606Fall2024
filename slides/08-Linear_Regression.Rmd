@@ -1,8 +1,8 @@
 ---
 title: "Linear Regression"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "March 27, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "October 30, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -61,13 +61,6 @@ ompWordCloud(omp$`What important question remains unanswered for you?`)
 ```
 ]
 
----
-# Announcements
-
-**Project Presentations**  
-You can sign up for a presentation slot on this [Google Sheet](https://docs.google.com/spreadsheets/d/1u5OOqJlPSYfKiGi0AjO9A7U3xkAvfisNxaX99_9XEyQ/edit?usp=sharing). Please do so ASAP.
-
-The NYC R Group will be holding their annual conference May 16th and 17th with workshops on the 15th. As students you qualify for the academic pricing and you can get another 20% off using the code LANDER20. More info here: https://rstats.ai/nyr.html
 
 ---
 # SAT Scores
