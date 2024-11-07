@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jason Bryer and Angela Lui">
+<meta name="dcterms.date" content="2024-11-06">
+<meta name="description" content="Slides and recording for the Linear Regression Part 2 meetup.">
 
-<title>DATA606 - Statistics and Probability – DATA 505 Fall 2024</title>
+<title>Linear Regression Part 2 – DATA 505 Fall 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,9 +74,12 @@ ul.task-list li input[type="checkbox"] {
 <script type="text/javascript" src="../fullcalendar-lib/main.js"></script>
 
 
-<meta property="og:title" content="DATA606 - Statistics and Probability – DATA 505 Fall 2024">
-<meta property="og:description" content="DATA 606 - Statistics and Probability - CUNY School of Professional Studies">
+<meta property="og:title" content="Linear Regression Part 2 – DATA 505 Fall 2024">
+<meta property="og:description" content="Slides and recording for the Linear Regression Part 2 meetup.">
+<meta property="og:image" content="https://fall2024.data606.net/posts/2024-11-06-Linear_Regression_Part_2.png">
 <meta property="og:site_name" content="DATA 505 Fall 2024">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 </head>
 
 <body class="nav-sidebar docked fullcontent">
@@ -85,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">DATA606 - Statistics and Probability</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Linear Regression Part 2</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -319,14 +325,34 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DATA606 - Statistics and Probability</h1>
-</div>
+<h1 class="title">Linear Regression Part 2</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Meetups</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Slides and recording for the <em>Linear Regression Part 2</em> meetup.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jason Bryer and Angela Lui </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 6, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -336,154 +362,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Note: Schedule is subject to change. Last updated November 06, 2024 10:30PM.</em></p>
-<p><a href="https://sps.cuny.edu/academics/academic-calendar">CUNY SPS Academic Calendar</a></p>
-<script>
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialDate: '2024-11-06',
-      initialView: 'dayGridMonth',
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-      },
-      height: 'auto',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      selectable: true,
-      selectMirror: true,
-      nowIndicator: true,
-      events: [
-
-
-::: {.cell layout-align="center"}
-{ title: "Chapter 1 - Intro to Data, R, and RStudio",
-  url: "/chapters/chapter1/",
-  start: '2024-09-04',
-  end: '2024-09-11' },
- { title: "Chatper 2 - Summarizing Data",
-  url: "/chatpers/chapter2/",
-  start: '2024-09-11',
-  end: '2024-09-25' },
- { title: "Chapter 3 - Probability",
-  url: "/chapters/chapter3",
-  start: '2024-09-25',
-  end: '2024-10-02' },
- { title: "Chapter 4 - Distributions",
-  url: "/chapters/chapter4",
-  start: '2024-10-02',
-  end: '2024-10-09' },
- { title: "Chatper 5 - Foundation for Inference",
-  url: "/chapters/chapter5",
-  start: '2024-10-09',
-  end: '2024-10-16' },
- { title: "Midterm",
-  url: "/assesssments/midterm/",
-  start: '2024-10-16',
-  end: '2024-10-21' },
- { title: "Chapter 6 - Inference for Categorical Data",
-  url: "/chapters/chapter6",
-  start: '2024-10-16',
-  end: '2024-10-23' },
- { title: "Chapter 7 - Inference for Numerical Data",
-  url: "/chapters/chapter7",
-  start: '2024-10-23',
-  end: '2024-10-30' },
- { title: "Chapter 8 - Linear Regression",
-  url: "/chapters/chapter8",
-  start: '2024-10-30',
-  end: '2024-11-06' },
- { title: "Chapter 9 - Multiple & Logistic Regression",
-  url: "/chapters/chapter9",
-  start: '2024-11-06',
-  end: '2024-12-04' },
- { title: "Intro to Bayesian Analysis",
-  url: "/chatpers/bayesian/",
-  start: '2024-12-04',
-  end: '2024-12-11' },
- { title: "Final Exam",
-  url: "/assesssments/final/",
-  start: '2024-12-11',
-  end: '2024-12-16' },
- { title: 'Intro to the Course',
-  start: '2024-08-28T20:00:00',
-  end: '2024-08-28T21:00:00' },
- { title: 'Intro to Data',
-  url: "/chapters/chapter1.html",
-  start: '2024-09-04T20:00:00',
-  end: '2024-09-04T21:00:00' },
- { title: 'Summarizing Data Part 1',
-  url: "/chapters/chapter2.html",
-  start: '2024-09-11T20:00:00',
-  end: '2024-09-11T21:00:00' },
- { title: 'Summarizing Data Part 2',
-  url: "/chapters/chapter3.html",
-  start: '2024-09-18T20:00:00',
-  end: '2024-09-18T21:00:00' },
- { title: 'Probability',
-  url: "/chapters/chapter3.html",
-  start: '2024-09-25T20:00:00',
-  end: '2024-09-25T21:00:00' },
- { title: 'Distributions',
-  url: "/chapters/chapter4.html",
-  start: '2024-10-02T20:00:00',
-  end: '2024-10-02T21:00:00' },
- { title: 'Foundation for Inference',
-  url: "/chapters/chapter5.html",
-  start: '2024-10-09T20:00:00',
-  end: '2024-10-09T21:00:00' },
- { title: 'Inference for Categorical Data',
-  url: "/chapters/chapter6.html",
-  start: '2024-10-16T20:00:00',
-  end: '2024-10-16T21:00:00' },
- { title: 'Inference for Numerical Data',
-  url: "/chapters/chapter7.html",
-  start: '2024-10-23T20:00:00',
-  end: '2024-10-23T21:00:00' },
- { title: 'Linear Regression',
-  url: "/chapters/chapter8.html",
-  start: '2024-10-30T20:00:00',
-  end: '2024-10-30T21:00:00' },
- { title: 'Linear Regression Part 2',
-  url: "/chapters/chapter8.html",
-  start: '2024-11-06T20:00:00',
-  end: '2024-11-06T21:00:00' },
- { title: 'Maximum Likelihood Estimation',
-  url: "/chapters/chapter9.html",
-  start: '2024-11-13T20:00:00',
-  end: '2024-11-13T21:00:00' },
- { title: 'Multiple Regression',
-  url: "/chapters/chapter9.html",
-  start: '2024-11-20T20:00:00',
-  end: '2024-11-20T21:00:00' },
- { title: 'NO MEETUP - Thanksgiving',
-  start: 'NA',
-  end: 'NA' },
- { title: 'Bayesian Analysis',
-  url: "/chapters/bayesian.html",
-  start: '2024-12-04T20:00:00',
-  end: '2024-12-04T21:00:00' },
- { title: 'Final Meetup',
-  start: '2024-12-11T20:00:00',
-  end: '2024-12-11T21:00:00' }
-:::
-
-
-      ]
-    });
-
-    calendar.render();
-  });
-
-</script>
-<div id="calendar">
-
-</div>
-<p><a href="../Course_Calendar.ics">Click here to import the course calendar into your calendar application</a></p>
+<p><a href="../slides/08-Linear_Regression2.html#1">Click here</a> to open the slides (<a href="../slides/08-Linear_Regression2.pdf">PDF</a>).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N9ZjNjEvd1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 
 
 
@@ -1057,4 +938,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jbryer/DATA606Fall2024/edit/main/course/calendar.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jbryer/DATA606Fall2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jbryer/DATA606Fall2024/edit/main/posts/2024-11-06-Linear_Regression_Part_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jbryer/DATA606Fall2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

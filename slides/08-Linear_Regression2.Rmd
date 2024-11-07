@@ -1,8 +1,8 @@
 ---
 title: "Linear Regression Part 2"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "April, 3, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "November 6, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -45,7 +45,6 @@ class: center, middle, inverse, title-slide
 library(googlesheets4)
 omp <- read_sheet(one_minute_paper_results)
 omp <- omp %>% dplyr::filter(Topic == 'Linear Regression (Chapter 8)')
-source('word_cloud.R')
 ```
 
 .pull-left[
