@@ -1,8 +1,8 @@
 ---
 title: "Maximum Likelihood Estimation and Logistic Regression"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "April 10, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "November 13, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -98,7 +98,7 @@ class: font90
 ---
 # Criteria for Grading
 
-* Data is presented to support the conslusions using the appropriate analysis (i.e. the statistical method chosen supports the research question).
+* Data is presented to support the conclusions using the appropriate analysis (i.e. the statistical method chosen supports the research question).
 
 * Suitable tables summarize data in a clear and meaningful way even to those unfamiliar with the project.
 
@@ -108,7 +108,7 @@ class: font90
 
 * Proper use of descriptive and/or inferential statistics.
 
-Full rubric available here: https://spring2024.data606.net/assignments/project/
+Full rubric available here: https://fall2024.data606.net/assignments/project/
 
 
 ---
@@ -524,7 +524,7 @@ class: font80
 
 This figure shows the estimated regression line for each iteration of the optimization procedure (on the left; OLS regression line in blue; MLE regression line in black) with the estimated parameters and log-likelihood for all iterations on the left. This Shiny app will allow you to explore this process interactively: `shiny_demo('mle')`
 
-```{r optim_animation, echo = FALSE, cache = TRUE, fig.height=6}
+```{r optim_animation, eval=FALSE, echo = FALSE, cache = FALSE, fig.height=6}
 df <- optim.ll$iterations_df
 names(df) <- c('Intercept', 'Slope', 'Sigma', 'LogLikelihood', 'Iteration')
 p1 <- ggplot(mtcars, aes(x = wt, y = mpg)) +
@@ -551,7 +551,12 @@ for(i in 2:100){
 	combined <- image_append(c(p1_gif[i], p2_gif[i]))
 	new_gif <- c(new_gif, combined)
 }
-new_gif
+# new_gif
+gganimate::anim_save('09-Logistic_Regression_optim_animation.gif', animation = new_gif)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics('09-Logistic_Regression_optim_animation.gif')
 ```
 
 ---
@@ -570,6 +575,8 @@ VisualStats::plot_likelihood(x = mtcars$wt, y = mtcars$mpg, pt = 2,
 # Likelihood Visualized `r hexes('visualMLE')`
 
 ```{r, cache = TRUE, echo = FALSE, fig.height = 8}
+df <- optim.ll$iterations_df
+names(df) <- c('Intercept', 'Slope', 'Sigma', 'LogLikelihood', 'Iteration')
 tmp <- df %>% dplyr::filter(Iteration == nrow(df))
 plots <- list()
 nplots <- 16 #nrow(mtcars)
@@ -797,7 +804,7 @@ optim.binomial$par
 ---
 # How did the optimizer get to this result?
 
-```{r, echo=FALSE, cache=TRUE}
+```{r optim-animation2, echo=FALSE, cache=TRUE, eval=FALSE}
 logistic <- function(x, b0, b1) {
 	return(1 / (1 + exp(-1 * (b0 + b1 * x)) ))
 }
@@ -845,8 +852,14 @@ for(i in 2:nFrames){
     combined <- image_append(c(p1_gif[i], p2_gif[i]))
     new_gif <- c(new_gif, combined)
 }
-new_gif
+# new_gif
+gganimate::anim_save('09-Logistic_Regression_optim_animation_logit.gif', animation = new_gif)
 ```
+
+```{r, echo=FALSE}
+knitr::include_graphics('09-Logistic_Regression_optim_animation_logit.gif')
+```
+
 
 ---
 class: font90
