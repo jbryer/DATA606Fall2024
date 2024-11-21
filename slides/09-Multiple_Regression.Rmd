@@ -1,8 +1,8 @@
 ---
 title: "Multiple Linear Regression"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "April 17, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "November 20, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -199,6 +199,17 @@ ggpairs(poverty[,c(2:6)])
 ```
 
 ---
+# 3-D scatter plot
+
+```{r, echo=FALSE, fig.height=8}
+library(scatterplot3d)
+s3d <- scatterplot3d(poverty[,c('female_house', 'white', 'poverty')], 
+					 type = "p", color = "blue", angle = 55, pch = 16)
+lm_out <- lm(poverty ~ female_house + white, data = poverty)
+s3d$plane3d(lm_out)
+```
+
+---
 # Predicting Poverty using Percent Female Householder
 
 .code70[
@@ -257,6 +268,84 @@ $$ R^2 = \frac{explained \quad variability \quad in \quad y}{total \quad variabi
 * However, in multiple linear regression, we can't calculate $R^2$ as the square of the correlation between *x* and *y* because we have multiple *x*s.
 
 * And next we'll learn another measure of explained variability, *adjusted $R^2$*, that requires the use of the third approach, ratio of explained and unexplained variability.
+
+---
+# $R^2$: Error variance
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = TRUE,
+						   plot_error_variance = FALSE,
+						   plot_total_variance = FALSE,
+						   plot_all_variances = FALSE)
+```
+
+---
+# $R^2$: Error variance (cont.)
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = TRUE,
+						   plot_error_variance = TRUE,
+						   plot_total_variance = FALSE,
+						   plot_all_variances = FALSE)
+```
+
+---
+# $R^2$: Error variance (cont.)
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = FALSE,
+						   plot_error_variance = TRUE,
+						   plot_total_variance = FALSE,
+						   plot_all_variances = FALSE)
+```
+
+---
+# $R^2$: Total (grey) and error (orange) variance
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = FALSE,
+						   plot_error_variance = TRUE,
+						   plot_total_variance = TRUE,
+						   plot_all_variances = FALSE)
+```
+
+---
+# $R^2$: Total (grey), error (orange), and regression (blue)
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = FALSE,
+						   plot_error_variance = TRUE,
+						   plot_total_variance = TRUE,
+						   plot_regression_variance = TRUE,
+						   plot_all_variances = FALSE)
+```
+
+---
+# $R^2$: All variances
+
+```{r, echo=FALSE}
+VisualStats::r_squared_vis(df = poverty, 
+						   formu = poverty ~ female_house + white,
+						   plot_residuals_squared = FALSE,
+						   plot_error_variance = FALSE,
+						   plot_total_variance = FALSE,
+						   plot_regression_variance = FALSE,
+						   plot_all_variances = TRUE)
+```
+
+```{r, eval=FALSE}
+VisualStats::r_squared_shiny()
+```
 
 ---
 # Predicting poverty using % female household & % white
@@ -339,7 +428,6 @@ where *n* is the number of cases and *p* is the number of predictors (explanator
 * Because *p* is never negative, ${ R }_{ adj }^{ 2 }$ will always be smaller than $R^2$.
 * ${ R }_{ adj }^{ 2 }$ applies a penalty for the number of predictors included in the model.
 * Therefore, we choose models with higher ${ R }_{ adj }^{ 2 }$ over others.
-
 
 ---
 class: left, font140

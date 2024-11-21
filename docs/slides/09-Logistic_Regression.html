@@ -334,7 +334,7 @@ optim.rss$par
 ```
 
 ```
-## [1] 37.285113 -5.344468
+## [1] 37.285115 -5.344464
 ```
 
 --
@@ -356,7 +356,7 @@ lm.out$coefficients
 # OLS with the `optim` function
 
 
-It took the `optim` function 65 iterations to find the optimal set of parameters that minimized the RSS. This figure shows the value of the parameters (i.e. intercept and slope) and the RSS for each iteration.
+It took the `optim` function 60 iterations to find the optimal set of parameters that minimized the RSS. This figure shows the value of the parameters (i.e. intercept and slope) and the RSS for each iteration.
 
 &lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
@@ -455,7 +455,7 @@ optim.ll$par[1:2]
 ```
 
 ```
-## [1] 37.285113 -5.344467
+## [1] 37.28548 -5.34458
 ```
 
 ``` r
@@ -527,7 +527,7 @@ optim.ll$par[3]
 ```
 
 ```
-## [1] 2.949165
+## [1] 2.949148
 ```
 
 ``` r
@@ -826,6 +826,9 @@ Since `\(log(1) = 0\)`, we want to reverse the likelihood, that is, we will take
 &lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" /&gt;
 
 
+
+Note that the lines correspond to the value we take the log of. For "successes" (i.e. outcome = 1) then we simply take the log of the predicted probability. For "failurs" (i.e outcome = 0), we take the log of 1 minus the predicted probability. 
+
 ---
 # Assumptions
 
@@ -847,7 +850,7 @@ lr.out &lt;- glm(Pass ~ Hours, data = study,
 plot_linear_assumption_check(lr.out, n_groups = 5)
 ```
 
-&lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -876,10 +879,11 @@ class: left, font140
 2. What important question remains unanswered for you?
 ]
 .pull-right[
-&lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="09-Logistic_Regression_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 https://forms.gle/ESBAdHRhzT65fW6c6
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

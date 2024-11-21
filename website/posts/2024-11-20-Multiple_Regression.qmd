@@ -1,0 +1,17 @@
+---
+title: "Multiple Regression"
+author: "Jason Bryer and Angela Lui"
+date: 2024-11-20
+draft: false
+description: "Slides and recording for the *Multiple Regression* meetup."
+categories: ["Meetups"]
+image: "2024-11-20-Multiple_Regression.png"
+---
+
+
+[Click here](/slides/09-Multiple_Regression.html#1) to open the slides ([PDF](/slides/09-Multiple_Regression.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/umHSr_lWYDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+

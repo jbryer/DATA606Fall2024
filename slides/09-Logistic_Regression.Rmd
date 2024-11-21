@@ -930,6 +930,13 @@ ggplot(data = study, aes(x = Hours, y = Pass)) +
     scale_color_brewer('Pass', type = 'qual', palette = 6)
 ```
 
+```{r, include=FALSE}
+study[study$Hours == 2.25,]
+(study[study$Hours == 2.25,]$Predict) |> log()
+(1 - study[study$Hours == 2.25,]$Predict) |> log()
+```
+
+Note that the lines correspond to the value we take the log of. For "successes" (i.e. outcome = 1) then we simply take the log of the predicted probability. For "failurs" (i.e outcome = 0), we take the log of 1 minus the predicted probability. 
 
 ---
 # Assumptions
@@ -984,3 +991,4 @@ qrcode::qr_code(one_minute_paper) |> plot(col = c('#FAFAFA', 'black'))
 ]
 
 `r one_minute_paper`
+
