@@ -44,9 +44,9 @@ class: center, middle, inverse, title-slide
 ---
 # Final Exam
 
-* Is now available on Blackboard.
+* Is now available on Brightspace.
 
-* Due by end of day May 19th
+* Due by end of day December 15th.
 
 * You may use your book and course materials.
 

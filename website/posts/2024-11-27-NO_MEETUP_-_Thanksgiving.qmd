@@ -1,0 +1,17 @@
+---
+title: "NO MEETUP - Thanksgiving"
+author: "Jason Bryer and Angela Lui"
+date: 2024-11-27
+draft: false
+description: "Slides and recording for the *NO MEETUP - Thanksgiving* meetup."
+categories: ["Meetups"]
+image: "2024-11-27-NO_MEETUP_-_Thanksgiving.png"
+---
+
+
+[Click here](/slides/10-Bayesian_Analysis.html#1) to open the slides ([PDF](/slides/10-Bayesian_Analysis.pdf)).
+
+
+
+
+
