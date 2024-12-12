@@ -1,0 +1,17 @@
+---
+title: "Final Meetup"
+author: "Jason Bryer and Angela Lui"
+date: 2024-12-11
+draft: false
+description: "Slides and recording for the *Final Meetup* meetup."
+categories: ["Meetups"]
+image: "2024-12-11-Final_Meetup.png"
+---
+
+
+[Click here](/slides/11-Final_Meetup.html#1) to open the slides ([PDF](/slides/11-Final_Meetup.pdf)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kMBPWYg9q0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+

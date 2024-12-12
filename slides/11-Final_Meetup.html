@@ -3,8 +3,8 @@
   <head>
     <title>Final Meetup</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Jason Bryer, Ph.D. and Angela Lui, Ph.D." />
-    <meta name="date" content="2024-05-15" />
+    <meta name="author" content="Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D." />
+    <meta name="date" content="2024-12-11" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/mtheme_max.css" type="text/css" />
@@ -21,19 +21,19 @@ class: center, middle, inverse, title-slide
 
 # Final Meetup
 ## DATA 606 - Statistics &amp; Probability for Data Analytics
-### Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-### May 15, 2024
+### Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+### December 11, 2024
 
 ---
 # Final Exam
 
-* Is now available on Blackboard.
+* Is now available on Brightspace.
 
-* Due by end of day May 19th
+* Due by midnight December 15th.
 
 * You may use your book and course materials.
 
-* We expect you to complete the exam on your own (i.e. do not discuss with classmates, colleagues, significant others, etc.)
+* We expect you to complete the exam on your own (i.e. do not discuss with classmates, colleagues, significant others, ChatGPT, etc.)
 
 * There are two parts:
 	1. Part one multiple choice questions and short answer questions.
@@ -50,7 +50,7 @@ Here are some resources for PSA:
 
 * PSA [Github repository](https://github.com/jbryer/psa) includes slides slides and Shiny application: https://github.com/jbryer/psa
 * Early version of an [Intro to PSA](https://psa.bryer.org) book: https://psa.bryer.org
-* Recording of a talk given this semester for the NYC Meetup group here: https://www.youtube.com/watch?v=JLV4mtFhRMM
+* Recording of a talk given in Fall 2023 for the NYC Meetup group here: https://www.youtube.com/watch?v=JLV4mtFhRMM
 
 
 .pull-left[
@@ -73,7 +73,7 @@ Here is list of some other R related projects I have worked on:
 
 &lt;img src='images/hex/likert.png' height='75' align='center'&gt; [`likert`](https://github.com/jbryer/likert) - Analysis and Visualization of Likert Based Items  
 &lt;img src='images/hex/ShinyQDA.png' height='75' align='center'&gt; [`ShinyQDA`](https://github.com/jbryer/ShinyQDA) - R Package and Shiny Application for the Analysis of Qualitative Data  
-&lt;img src='images/hex/brickset.png' height='75' align='center'&gt; [`brickset`](https://github.com/jbryer/brickset) - An R Package to Interface with the Brickset API for Getting Data About LEGO sets  
+&lt;img src='images/hex/clav.png' height='75' align='center'&gt; [`clav`](https://github.com/jbryer/clav) - Cluster Analysis Validation  
 &lt;img src='images/hex/IRRsim.png' height='75' align='center'&gt; [`IRRsim`](https://github.com/jbryer/IRRsim) - An R Package for Simulating Inter-Rater Reliability  
 &lt;img src='images/hex/mldash.png' height='75' align='center'&gt; [`mldash`](https://github.com/jbryer/mldash) - Machine Learning Dashboard  
 &lt;img src='images/hex/FutureMapping.png' height='75' align='center'&gt; [AmplifyApp](https://amplifyapp.org/en), [dashboard](https://amplifyapp.org/en), and [Future Mapping NYC](https://futuremapping.org)
@@ -81,14 +81,16 @@ Here is list of some other R related projects I have worked on:
 ---
 # DAACS (Jason and Angela)
 
-[The Diagnostic Assessment and Achievement of College Skills](https://daacs.net) (DAACS) is a suite of technological and social supports to optimize student learning. DAACS  provides personalized feedback about students’ strengths and weaknesses in  terms of key academic and self-regulated learning skills, linking them to the resources to help them be successful students.
+[The Diagnostic Assessment and Achievement of College Skills](https://daacs.net) (DAACS) is a suite of technological and social supports to optimize student learning. DAACS  provides personalized feedback about students’ strengths and weaknesses in  terms of key academic and self-regulated learning skills, linking them to the resources to help them be successful students. This is currently supported by a five-year $3.8 million grant received in 2021 from the Institute of Education Sciences to test the efficacy at three institutions.
 
 Applications of Data Science:
 
 * We use natural language processing and predictive models to machine score the essays.
+  * We had a student this semester work with us to explore whether we can detect AI generated essays specific to the DAACS writing prompt (answer: we)
 * We use DAACS data to estimate "risk scores" for students failing so we can target them with resources to help them be successful.
+  * Related to this, we have developed a new R package for estimated predictive models with missing data, see [medley](https://github.com/jbryer/medley).
 
-Received a five-year $3.8 million grant in 2021 from the Institute of Education Sciences to test the efficacy at three institutions.
+
 
 
 ---
@@ -120,6 +122,51 @@ Received a five-year $3.8 million grant in 2021 from the Institute of Education 
 * Sentiment Analysis
 * Content Analysis
 
+---
+# George: Data and Models in Biogeochemistry 
+
+.pull-left[
+
+- Metagenomes/Systems Bio
+
+- Ecology and Traits
+
+- Physical Oceanography
+
+- Bayesian Inference
+
+- Understand the response to environmental drivers like climate change
+
+]
+.pull-right[
+
+![](images/ResearchSlideBiogeochemistry.png)
+
+]
+
+---
+# Critical Transitions
+
+
+- Revolutions, Economic Booms/Busts, Tech Adoption, Desertification
+
+- Statistical Phyics. for indicators of change
+
+- Combine theory and data from Social/Economic Systems
+
+![](images/ResearchSlideCriticalTransitions.png)
+
+
+---
+# Other Areas
+
+- Past: collective behavior, plasma physics, geophysical fluid dynamics, and numerical analysis.
+
+- Happy to help you with any ideas even tangentially related to these areas
+
+- Future interest: Random Numerical Methods eg Hamiltonian MCMC methods, random linear algebra
+
+
 
 ---
 # Thank You
@@ -136,7 +183,13 @@ This has been a great semester. Please don't hesitate to reach out:
 ]
 .pull-right[
 <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> Email: [angela.lui@cuny.edu](mailto:angela.lui@cuny.edu)
-<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> LinkedIn: [angela-m-lui-8b051928](https://www.linkedin.com/in/angela-m-lui-8b051928/)]
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> LinkedIn: [angela-m-lui-8b051928](https://www.linkedin.com/in/angela-m-lui-8b051928/)
+
+&lt;hr /&gt;
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> Email: [george.hagstrom@cuny.edu](mailto:george.hagstrom@cuny.edu)
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> LinkedIn: [george-hagstrom-846b1b13](https://www.linkedin.com/in/george-hagstrom-846b1b13/)
+]
 
 &lt;br/&gt;
 

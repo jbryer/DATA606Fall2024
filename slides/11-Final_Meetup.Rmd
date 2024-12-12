@@ -1,8 +1,8 @@
 ---
 title: "Final Meetup"
 subtitle: "DATA 606 - Statistics & Probability for Data Analytics"
-author: Jason Bryer, Ph.D. and Angela Lui, Ph.D.
-date: "May 15, 2024"
+author: Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+date: "December 11, 2024"
 output:
   xaringan::moon_reader:
     css: ["assets/mtheme_max.css", "assets/fonts_mtheme_max.css"]
@@ -46,11 +46,11 @@ class: center, middle, inverse, title-slide
 
 * Is now available on Brightspace.
 
-* Due by end of day December 15th.
+* Due by midnight December 15th.
 
 * You may use your book and course materials.
 
-* We expect you to complete the exam on your own (i.e. do not discuss with classmates, colleagues, significant others, etc.)
+* We expect you to complete the exam on your own (i.e. do not discuss with classmates, colleagues, significant others, ChatGPT, etc.)
 
 * There are two parts:
 	1. Part one multiple choice questions and short answer questions.
@@ -67,7 +67,7 @@ Here are some resources for PSA:
 
 * PSA [Github repository](https://github.com/jbryer/psa) includes slides slides and Shiny application: https://github.com/jbryer/psa
 * Early version of an [Intro to PSA](https://psa.bryer.org) book: https://psa.bryer.org
-* Recording of a talk given this semester for the NYC Meetup group here: https://www.youtube.com/watch?v=JLV4mtFhRMM
+* Recording of a talk given in Fall 2023 for the NYC Meetup group here: https://www.youtube.com/watch?v=JLV4mtFhRMM
 
 
 .pull-left[
@@ -90,7 +90,7 @@ Here is list of some other R related projects I have worked on:
 
 <img src='images/hex/likert.png' height='75' align='center'> [`likert`](https://github.com/jbryer/likert) - Analysis and Visualization of Likert Based Items  
 <img src='images/hex/ShinyQDA.png' height='75' align='center'> [`ShinyQDA`](https://github.com/jbryer/ShinyQDA) - R Package and Shiny Application for the Analysis of Qualitative Data  
-<img src='images/hex/brickset.png' height='75' align='center'> [`brickset`](https://github.com/jbryer/brickset) - An R Package to Interface with the Brickset API for Getting Data About LEGO sets  
+<img src='images/hex/clav.png' height='75' align='center'> [`clav`](https://github.com/jbryer/clav) - Cluster Analysis Validation  
 <img src='images/hex/IRRsim.png' height='75' align='center'> [`IRRsim`](https://github.com/jbryer/IRRsim) - An R Package for Simulating Inter-Rater Reliability  
 <img src='images/hex/mldash.png' height='75' align='center'> [`mldash`](https://github.com/jbryer/mldash) - Machine Learning Dashboard  
 <img src='images/hex/FutureMapping.png' height='75' align='center'> [AmplifyApp](https://amplifyapp.org/en), [dashboard](https://amplifyapp.org/en), and [Future Mapping NYC](https://futuremapping.org)
@@ -98,14 +98,16 @@ Here is list of some other R related projects I have worked on:
 ---
 # DAACS (Jason and Angela)
 
-[The Diagnostic Assessment and Achievement of College Skills](https://daacs.net) (DAACS) is a suite of technological and social supports to optimize student learning. DAACS  provides personalized feedback about students’ strengths and weaknesses in  terms of key academic and self-regulated learning skills, linking them to the resources to help them be successful students.
+[The Diagnostic Assessment and Achievement of College Skills](https://daacs.net) (DAACS) is a suite of technological and social supports to optimize student learning. DAACS  provides personalized feedback about students’ strengths and weaknesses in  terms of key academic and self-regulated learning skills, linking them to the resources to help them be successful students. This is currently supported by a five-year $3.8 million grant received in 2021 from the Institute of Education Sciences to test the efficacy at three institutions.
 
 Applications of Data Science:
 
 * We use natural language processing and predictive models to machine score the essays.
+  * We had a student this semester work with us to explore whether we can detect AI generated essays specific to the DAACS writing prompt (answer: we)
 * We use DAACS data to estimate "risk scores" for students failing so we can target them with resources to help them be successful.
+  * Related to this, we have developed a new R package for estimated predictive models with missing data, see [medley](https://github.com/jbryer/medley).
 
-Received a five-year $3.8 million grant in 2021 from the Institute of Education Sciences to test the efficacy at three institutions.
+
 
 
 ---
@@ -139,6 +141,51 @@ knitr::include_graphics('images/Lui_dissertation.jpg')
 * Sentiment Analysis
 * Content Analysis
 
+---
+# George: Data and Models in Biogeochemistry 
+
+.pull-left[
+
+- Metagenomes/Systems Bio
+
+- Ecology and Traits
+
+- Physical Oceanography
+
+- Bayesian Inference
+
+- Understand the response to environmental drivers like climate change
+
+]
+.pull-right[
+
+![](images/ResearchSlideBiogeochemistry.png)
+
+]
+
+---
+# Critical Transitions
+
+
+- Revolutions, Economic Booms/Busts, Tech Adoption, Desertification
+
+- Statistical Phyics. for indicators of change
+
+- Combine theory and data from Social/Economic Systems
+
+![](images/ResearchSlideCriticalTransitions.png)
+
+
+---
+# Other Areas
+
+- Past: collective behavior, plasma physics, geophysical fluid dynamics, and numerical analysis.
+
+- Happy to help you with any ideas even tangentially related to these areas
+
+- Future interest: Random Numerical Methods eg Hamiltonian MCMC methods, random linear algebra
+
+
 
 ---
 # Thank You
@@ -155,7 +202,13 @@ This has been a great semester. Please don't hesitate to reach out:
 ]
 .pull-right[
 `r fa('envelope')` Email: [angela.lui@cuny.edu](mailto:angela.lui@cuny.edu)
-`r fa('linkedin')` LinkedIn: [angela-m-lui-8b051928](https://www.linkedin.com/in/angela-m-lui-8b051928/)]
+`r fa('linkedin')` LinkedIn: [angela-m-lui-8b051928](https://www.linkedin.com/in/angela-m-lui-8b051928/)
+
+<hr />
+
+`r fa('envelope')` Email: [george.hagstrom@cuny.edu](mailto:george.hagstrom@cuny.edu)
+`r fa('linkedin')` LinkedIn: [george-hagstrom-846b1b13](https://www.linkedin.com/in/george-hagstrom-846b1b13/)
+]
 
 <br/>
 
