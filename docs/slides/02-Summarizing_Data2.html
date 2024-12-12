@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Summarizing Data Part 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D." />
+    <meta name="date" content="2024-09-18" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="assets/fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle, inverse, title-slide
+
+# Summarizing Data Part 2
+## DATA 606 - Statistics &amp; Probability for Data Analytics
+### Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+### September 18, 2024
+
+
+---
+# One Minute Paper Results
+
+
+
+.pull-left[
+**What was the most important thing you learned during this class?**
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+**What important question remains unanswered for you?**
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: middle
+# Grammer of Graphics
+
+.center[
+&lt;img src="images/ggplot2_masterpiece.png" height="550" /&gt;
+]
+
+---
+# Data Visualizations with ggplot2 &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+* `ggplot2` is an R package that provides an alternative framework based upon Wilkinson’s (2005) Grammar of Graphics.
+
+* `ggplot2` is, in general, more flexible for creating "prettier" and complex plots.
+
+* Works by creating layers of different types of objects/geometries (i.e. bars, points, lines, polygons, etc.)
+`ggplot2` has at least three ways of creating plots:
+     1. `qplot`
+     2. `ggplot(...) + geom_XXX(...) + ...`
+     3. `ggplot(...) + layer(...)`
+
+* We will focus only on the second.
+
+
+---
+# Parts of a `ggplot2` Statement &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+* Data  
+`ggplot(myDataFrame, aes(x=x, y=y))`
+
+* Layers  
+`geom_point()`, `geom_histogram()`
+
+* Facets  
+`facet_wrap(~ cut)`, `facet_grid(~ cut)`
+
+* Scales  
+`scale_y_log10()`
+
+* Other options  
+`ggtitle('my title')`, `ylim(c(0, 10000))`, `xlab('x-axis label')`
+
+---
+# Lots of geoms &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ls('package:ggplot2')[grep('^geom_', ls('package:ggplot2'))]
+```
+
+```
+##  [1] "geom_abline"            "geom_area"              "geom_bar"              
+##  [4] "geom_bin_2d"            "geom_bin2d"             "geom_blank"            
+##  [7] "geom_boxplot"           "geom_col"               "geom_contour"          
+## [10] "geom_contour_filled"    "geom_count"             "geom_crossbar"         
+## [13] "geom_curve"             "geom_density"           "geom_density_2d"       
+## [16] "geom_density_2d_filled" "geom_density2d"         "geom_density2d_filled" 
+## [19] "geom_dotplot"           "geom_errorbar"          "geom_errorbarh"        
+## [22] "geom_freqpoly"          "geom_function"          "geom_hex"              
+## [25] "geom_histogram"         "geom_hline"             "geom_jitter"           
+## [28] "geom_label"             "geom_line"              "geom_linerange"        
+## [31] "geom_map"               "geom_path"              "geom_point"            
+## [34] "geom_pointrange"        "geom_polygon"           "geom_qq"               
+## [37] "geom_qq_line"           "geom_quantile"          "geom_raster"           
+## [40] "geom_rect"              "geom_ribbon"            "geom_rug"              
+## [43] "geom_segment"           "geom_sf"                "geom_sf_label"         
+## [46] "geom_sf_text"           "geom_smooth"            "geom_spoke"            
+## [49] "geom_step"              "geom_text"              "geom_tile"             
+## [52] "geom_violin"            "geom_vline"
+```
+
+---
+# Data Visualization Cheat Sheet &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+.center[
+&lt;a href='https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf'&gt;&lt;img src='images/data-visualization-2.1.png' width='700' /&gt;&lt;/a&gt;
+]
+
+
+---
+# Scatterplot  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=pieces, y=US_retailPrice)) + geom_point()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Scatterplot (cont.)  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=pieces, y=US_retailPrice, color=availability)) + geom_point()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Scatterplot (cont.)  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=pieces, y=US_retailPrice, size=minifigs, color=availability)) + geom_point()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Scatterplot (cont.)  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=pieces, y=US_retailPrice, size=minifigs)) + geom_point() + facet_wrap(~ availability)
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Boxplots  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x='Lego', y=US_retailPrice)) + geom_boxplot()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Boxplots (cont.)  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=availability, y=US_retailPrice)) + geom_boxplot()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Boxplot (cont.)  &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x=availability, y=US_retailPrice)) + geom_boxplot() + coord_flip()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Histograms &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x = US_retailPrice)) + geom_histogram(binwidth = 25)
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Histograms (cont.)&lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x = US_retailPrice)) + geom_histogram(bins = 15) + scale_x_log10()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Histograms (cont.) &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x = US_retailPrice)) + geom_histogram(binwidth = 25) + facet_wrap(~ availability)
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Density Plots &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x = US_retailPrice, color = availability)) + geom_density()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Density Plots (cont.) &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+
+``` r
+ggplot(legosets, aes(x = US_retailPrice, color = availability)) + geom_density() + scale_x_log10()
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# `ggplot2` aesthetics &lt;img src="images/hex/ggplot2.png" class="title-hex"&gt;
+
+.center[
+&lt;a href='images/ggplot_aesthetics_cheatsheet.png' target='_new'&gt; &lt;img src='images/ggplot_aesthetics_cheatsheet.png' height='550' /&gt;&lt;/a&gt;
+]
+
+---
+# Likert Scales &lt;img src="images/hex/likert.png" class="title-hex"&gt;
+
+Likert scales are a type of questionnaire where respondents are asked to rate items on scales usually ranging from four to seven levels (e.g. strongly disagree to strongly agree).
+
+
+``` r
+library(likert)
+library(reshape)
+data(pisaitems)
+items24 &lt;- pisaitems[,substr(names(pisaitems), 1,5) == 'ST24Q']
+items24 &lt;- rename(items24, c(
+			ST24Q01="I read only if I have to.",
+			ST24Q02="Reading is one of my favorite hobbies.",
+			ST24Q03="I like talking about books with other people.",
+			ST24Q04="I find it hard to finish books.",
+			ST24Q05="I feel happy if I receive a book as a present.",
+			ST24Q06="For me, reading is a waste of time.",
+			ST24Q07="I enjoy going to a bookstore or a library.",
+			ST24Q08="I read only to get information that I need.",
+			ST24Q09="I cannot sit still and read for more than a few minutes.",
+			ST24Q10="I like to express my opinions about books I have read.",
+			ST24Q11="I like to exchange books with my friends."))
+```
+
+---
+# `likert` R Package &lt;img src="images/hex/likert.png" class="title-hex"&gt;
+
+
+``` r
+l24 &lt;- likert(items24)
+summary(l24)
+```
+
+```
+##                                                        Item      low neutral
+## 10   I like to express my opinions about books I have read. 41.07516       0
+## 5            I feel happy if I receive a book as a present. 46.93475       0
+## 8               I read only to get information that I need. 50.39874       0
+## 7                I enjoy going to a bookstore or a library. 51.21231       0
+## 3             I like talking about books with other people. 54.99129       0
+## 11                I like to exchange books with my friends. 55.54115       0
+## 2                    Reading is one of my favorite hobbies. 56.64470       0
+## 1                                 I read only if I have to. 58.72868       0
+## 4                           I find it hard to finish books. 65.35125       0
+## 9  I cannot sit still and read for more than a few minutes. 76.24524       0
+## 6                       For me, reading is a waste of time. 82.88729       0
+##        high     mean        sd
+## 10 58.92484 2.604913 0.9009968
+## 5  53.06525 2.466751 0.9446590
+## 8  49.60126 2.484616 0.9089688
+## 7  48.78769 2.428508 0.9164136
+## 3  45.00871 2.328049 0.9090326
+## 11 44.45885 2.343193 0.9609234
+## 2  43.35530 2.344530 0.9277495
+## 1  41.27132 2.291811 0.9369023
+## 4  34.64875 2.178299 0.8991628
+## 9  23.75476 1.974736 0.8793028
+## 6  17.11271 1.810093 0.8611554
+```
+
+---
+# `likert` Plots  &lt;img src="images/hex/likert.png" class="title-hex"&gt;
+
+
+``` r
+plot(l24)
+```
+
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Pie Charts
+
+There is only one pie chart in *OpenIntro Statistics* (Diez, Barr, &amp; Çetinkaya-Rundel, 2015, p. 48). Consider the following three pie charts that represent the preference of five different colors. Is there a difference between the three pie charts? This is probably a difficult to answer.
+
+&lt;center&gt;&lt;img src='images/Pie.png' width='500'&gt;&lt;/center&gt;
+
+
+---
+# Pie Charts
+
+There is only one pie chart in *OpenIntro Statistics* (Diez, Barr, &amp; Çetinkaya-Rundel, 2015, p. 48). Consider the following three pie charts that represent the preference of five different colors. Is there a difference between the three pie charts? This is probably a difficult to answer.
+
+&lt;center&gt;&lt;img src='images/Pie.png' width='500'&gt;&lt;/center&gt;
+
+&lt;center&gt;&lt;img src='images/Bar.png' width='500'&gt;&lt;/center&gt;
+
+Source: [https://en.wikipedia.org/wiki/Pie_chart](https://en.wikipedia.org/wiki/Pie_chart).
+
+---
+class: middle
+# Just say NO to pie charts!
+
+.font150[
+"There is no data that can be displayed in a pie chart that cannot better be displayed in some other type of chart"]
+.right[.font130[John Tukey]]
+
+---
+# Additional Resources
+
+For data wrangling:
+
+* `dplyr` website: https://dplyr.tidyverse.org
+* R for Data Science book: https://r4ds.had.co.nz/wrangle-intro.html
+* Wrangling penguins tutorial: https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome
+* Data transformation cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+
+For data visualization:
+
+* `ggplot2` website: https://ggplot2.tidyverse.org
+* R for Data Science book: https://r4ds.had.co.nz/data-visualisation.html
+* R Graphics Cookbook: https://r-graphics.org
+* Data visualization cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
+
+---
+class: left, font140
+# One Minute Paper
+
+.pull-left[
+1. What was the most important thing you learned during this class?
+2. What important question remains unanswered for you?
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data2_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+https://forms.gle/ESBAdHRhzT65fW6c6
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLanguage": "R",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<!-- Source: https://www.garrickadenbuie.com/blog/xaringan-tip-logo-all-slides/ -->
+<style>
+.logo {
+  background-image: url(images/hex/DATA606.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 2em;
+  right: 0.5em;
+  width: 55px;
+  height: 64px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Summarizing Data Part 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D." />
+    <meta name="date" content="2024-09-11" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/htmltools-fill/fill.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding/datatables.js"></script>
+    <script src="libs/jquery/jquery-3.6.0.min.js"></script>
+    <link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="assets/fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle, inverse, title-slide
+
+# Summarizing Data Part 1
+## DATA 606 - Statistics &amp; Probability for Data Analytics
+### Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+### September 11, 2024
+
+
+---
+# One Minute Paper Results
+
+
+
+.pull-left[
+**What was the most important thing you learned during this class?**
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+**What important question remains unanswered for you?**
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+# Workflow
+
+.center[
+&lt;img src='images/data-science-wrangle.png' alt = 'Data Science Workflow' width='1000' /&gt;
+]
+
+.font80[Source: [Wickham &amp; Grolemund, 2017](https://r4ds.had.co.nz)]
+
+
+---
+# Tidy Data
+
+.center[
+&lt;img src='images/tidydata_1.jpg' height='500' /&gt;
+]
+
+See Wickham (2014) [Tidy data](https://vita.had.co.nz/papers/tidy-data.html).
+
+
+---
+# Types of Data
+
+.pull-left[
+* Numerical (quantitative)
+	* Continuous
+	* Discrete
+]
+.pull-right[
+* Categorical (qualitative)
+	* Regular categorical
+	* Ordinal
+]
+.center[
+&lt;img src='images/continuous_discrete.png' height='400' /&gt;
+]
+
+---
+# Data Types in R
+
+&lt;img src="images/DataTypesConceptModel.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+# Data Types / Descriptives / Visualizations
+
+
+Data Type    |  Descriptive Stats                            | Visualization
+-------------|-----------------------------------------------|-------------------|
+Continuous   | mean, median, mode, standard deviation, IQR   | histogram, density, box plot
+Discrete     | contingency table, proportional table, median | bar plot
+Categorical  | contingency table, proportional table         | bar plot
+Ordinal      | contingency table, proportional table, median | bar plot
+Two quantitative | correlation                               | scatter plot
+Two qualitative  | contingency table, chi-squared            | mosaic plot, bar plot
+Quantitative &amp; Qualitative | grouped summaries, ANOVA, t-test | box plot
+
+---
+# Statistics
+
+.pull-left[
+When describing a quantitative variable we are often interested in two things:
+
+1. A measure of center
+2. A measure of spread
+
+The most common measures we will use in this class is the mean and median.
+
+$$ \bar{x} = \frac{\Sigma(x_i)}{n} $$
+
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+
+]
+.pull-right[
+
+Note that in the numerator for the variance calculation we square the differences (also known as deviations). Squaring terms is common practice in statistics that serves two purposes:
+
+1. It makes all the values positive.
+
+2. It weighs observations that are further from the center more.
+
+]
+
+
+---
+# Variance
+
+.pull-left[
+Population Variance:
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+Consider a dataset with five values (black points in the figure). For the largest value, the deviance is represented by the blue line ( `\(x_i - \bar{x}\)` ).
+
+See also:
+https://shiny.rit.albany.edu/stat/visualizess/  
+https://github.com/jbryer/VisualStats/
+
+]
+.pull-right[
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Variance (cont.)
+
+.pull-left[
+Population Variance:
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+In the numerator, we square each of these deviances. We can conceptualize this as a square. Here, we add the deviance in the *y* direction.
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Variance (cont.)
+
+.pull-left[
+Population Variance:
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+
+We end up with a square.
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Variance (cont.)
+
+.pull-left[
+Population Variance:
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+We can plot the squared deviance for all the data points. That is, each component in the numerator is the area of each of these squares.
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Variance (cont.)
+
+.pull-left[
+Population Variance:
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+The variance is therefore the average of the area of all these squares, here represented by the orange square.
+]
+.pull-right[
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Population versus Sample Variance
+
+.pull-left[
+Typically we want the sample variance. The difference is we divide by `\(n - 1\)` to calculate the sample variance. This results in a slightly larger area (variance) then if we divide by `\(n\)`.
+
+Population Variance (yellow):
+$$ S^2 = \frac{\Sigma (x_i - \bar{x})^2}{N}$$
+
+Sample Variance (green):
+$$ s^2 = \frac{\Sigma (x_i - \bar{x})^2}{n-1}$$
+
+]
+.pull-right[
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Robust Statistics
+
+Consider the following data randomly selected from the normal distribution:
+
+.pull-left[
+
+``` r
+set.seed(41)
+x &lt;- rnorm(30, mean = 100, sd = 15)
+mean(x); sd(x)
+```
+
+```
+## [1] 103.1934
+```
+
+```
+## [1] 16.8945
+```
+
+``` r
+median(x); IQR(x)
+```
+
+```
+## [1] 103.9947
+```
+
+```
+## [1] 25.68004
+```
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Robust Statistics
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Robust Statistics
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+Let's add an extreme value:
+
+
+``` r
+x &lt;- c(x, 1000)
+```
+
+--
+
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Robust Statistics
+
+Median and IQR are more robust to skewness and outliers than mean and SD. Therefore,
+
+* for skewed distributions it is often more helpful to use median and IQR to describe the center and spread
+
+* for symmetric distributions it is often more helpful to use the mean and SD to describe the center and spread
+
+
+
+
+---
+class: font80
+# About `legosets` &lt;img src="images/hex/brickset.png" class="title-hex"&gt;
+
+To install the `brickset` package:
+
+
+``` r
+remotes::install_github('jbryer/brickset')
+```
+
+To load the load the `legosets` dataset.
+
+
+``` r
+data('legosets', package = 'brickset')
+```
+
+The `legosets` data has 19409 observations of 36 variables.
+
+.code70[
+
+``` r
+names(legosets)
+```
+
+```
+##  [1] "setID"                 "number"                "numberVariant"        
+##  [4] "name"                  "year"                  "theme"                
+##  [7] "themeGroup"            "subtheme"              "category"             
+## [10] "released"              "pieces"                "minifigs"             
+## [13] "bricksetURL"           "rating"                "reviewCount"          
+## [16] "packagingType"         "availability"          "agerange_min"         
+## [19] "thumbnailURL"          "imageURL"              "US_retailPrice"       
+## [22] "US_dateFirstAvailable" "US_dateLastAvailable"  "UK_retailPrice"       
+## [25] "UK_dateFirstAvailable" "UK_dateLastAvailable"  "CA_retailPrice"       
+## [28] "CA_dateFirstAvailable" "CA_dateLastAvailable"  "DE_retailPrice"       
+## [31] "DE_dateFirstAvailable" "DE_dateLastAvailable"  "height"               
+## [34] "width"                 "depth"                 "weight"
+```
+]
+
+---
+# Structure (`str`) &lt;img src="images/hex/brickset.png" class="title-hex"&gt;
+
+.code50[
+
+
+``` r
+str(legosets)
+```
+
+```
+## 'data.frame':	19409 obs. of  36 variables:
+##  $ setID                : int  7693 7695 7697 7698 25534 7418 7419 6020 22704 7421 ...
+##  $ number               : chr  "1" "2" "3" "4" ...
+##  $ numberVariant        : int  8 8 6 4 6 1 1 1 3 4 ...
+##  $ name                 : chr  "Small house set" "Medium house set" "Medium house set" "Large house set" ...
+##  $ year                 : int  1970 1970 1970 1970 1970 1970 1970 1970 1970 1970 ...
+##  $ theme                : chr  "Minitalia" "Minitalia" "Minitalia" "Minitalia" ...
+##  $ themeGroup           : chr  "Vintage" "Vintage" "Vintage" "Vintage" ...
+##  $ subtheme             : chr  NA NA NA NA ...
+##  $ category             : chr  "Normal" "Normal" "Normal" "Normal" ...
+##  $ released             : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+##  $ pieces               : int  67 109 158 233 NA 1 1 60 65 NA ...
+##  $ minifigs             : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ bricksetURL          : chr  "https://brickset.com/sets/1-8" "https://brickset.com/sets/2-8" "https://brickset.com/sets/3-6" "https://brickset.com/sets/4-4" ...
+##  $ rating               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ reviewCount          : int  0 0 1 0 0 0 0 0 0 0 ...
+##  $ packagingType        : chr  "{Not specified}" "{Not specified}" "{Not specified}" "{Not specified}" ...
+##  $ availability         : chr  "{Not specified}" "{Not specified}" "{Not specified}" "{Not specified}" ...
+##  $ agerange_min         : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ thumbnailURL         : chr  "https://images.brickset.com/sets/small/1-8.jpg" "https://images.brickset.com/sets/small/2-8.jpg" "https://images.brickset.com/sets/small/3-6.jpg" "https://images.brickset.com/sets/small/4-4.jpg" ...
+##  $ imageURL             : chr  "https://images.brickset.com/sets/images/1-8.jpg" "https://images.brickset.com/sets/images/2-8.jpg" "https://images.brickset.com/sets/images/3-6.jpg" "https://images.brickset.com/sets/images/4-4.jpg" ...
+##  $ US_retailPrice       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ US_dateFirstAvailable: Date, format: NA NA ...
+##  $ US_dateLastAvailable : Date, format: NA NA ...
+##  $ UK_retailPrice       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ UK_dateFirstAvailable: Date, format: NA NA ...
+##  $ UK_dateLastAvailable : Date, format: NA NA ...
+##  $ CA_retailPrice       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ CA_dateFirstAvailable: Date, format: NA NA ...
+##  $ CA_dateLastAvailable : Date, format: NA NA ...
+##  $ DE_retailPrice       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ DE_dateFirstAvailable: Date, format: NA NA ...
+##  $ DE_dateLastAvailable : Date, format: NA NA ...
+##  $ height               : num  NA NA NA NA NA ...
+##  $ width                : num  NA NA NA NA NA ...
+##  $ depth                : num  NA NA NA NA NA NA NA NA 5.08 NA ...
+##  $ weight               : num  NA NA NA NA NA NA NA NA NA NA ...
+```
+
+]
+
+---
+# RStudio Eenvironment tab can help &lt;img src="images/hex/rstudio.png" class="title-hex"&gt;
+
+&lt;img src="images/legosets_rstudio_environment.png" width="500" style="display: block; margin: auto;" /&gt;
+
+---
+class: hide-logo
+# Table View 
+
+.font60[
+
+<div class="datatables html-widget html-fill-item" id="htmlwidget-a1b4be7908adc2ab4f24" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a1b4be7908adc2ab4f24">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"],[9712,28411,24252,1448,32020,28352,34334,31865,31061,30688,7070,26199,3897,29837,7895,13661,7925,24897,34243,2489,3579,29444,26760,32223,5521,7583,4413,6935,4211,1280,2778,564,7076,7066,1895,31278,25926,25630,24538,47224,1670,24827,5110,1035,1954,29457,33858,1375,22549,9221,31924,28060,30011,31166,4049,5262,3664,1432,24288,9700,31775,48675,2429,6216,9038,32046,646,31581,28505,6071,7411,33608,22472,25778,31746,27928,7949,3385,26291,23491,488,29920,26027,29353,47011,2861,30139,31511,6651,9392,3543,45504,23542,30569,13320,48663,31784,3555,23773,9564],["Darth Maul","TIE Fighter Attack","LEGO Minifigures - Series 14 - Monsters {Random bag}","Head Stand","Mania Magazine March - April 1995","Genius LEGO Inventions with Bricks You Already Have","Friendship Flowers","BRICK KICKS Summer 1991","LEGO Space Projects: 52 Galactic Models","James Potter","Pirates Magnet Set","Toni Kroos","Diego's Rescue Truck","Green Lantern","Orient Bazaar","Bonus/Value Pack","Meteor Strike","Party Cakes","Vengestone Guard","Duplo Sleeping Bags","Brickster's Trike","Race Boat Transporter","Snow Resort Ice Rink","3-in-1 Bundle Pack","Exo-Force Elastic Watch","Western Train Chase","Tehutti","Echo Base","Slammer Rhino","Go-Kart","LEGO Baby Stack 'n' Learn","Wiz the Wizard","Archer Set","Belville Lunch Box","Nick","Adidas Crew Socks 3 Pairs","Volcano Starter Set","Ultimate Lance","Heartlake City Airport","Play Unstoppable Stickers","Ricky Racoon and his Scooter","Slave I","Quad Bike","Harbour","Road Plates, Junction","Police Brick Box","Monster Jam Collection","Crib and Mirror Adventure","Barnyard","Kendo Jay Booster Pack","Policeman and dog","Dalmatian Puppycorn","J.B.","The Chariot","4 Lighting Standards Electric 12V","PreSchool Set","Alien Fossilizer","Naughty Spud","Technic Crossblocks","Mining Dozer","PoulErik","Hedwig Bag Tag","Monorail Stop / Reverse Switch","AT-AP Walker","Logging Truck","Mania Magazine July - August 1999","Pirates Treasure Hold","LEGO Minifigures - Looney Tunes Series - Sealed Box","Basic Brick Set ","Castle Chess Set","Building Set ","Minifigure Display Case 16 Red","Express Train","Crazy Action Contraptions","Ice Cream Shop","Train Tracks","Piano","Ultra Lite I","LEGO Truck Show","Curve Chaser","Viking Line Ferry","2x4 Bright Blue Keyring","Ragana's Magic Shadow Castle","Pasaana Speeder Chase","Summer Fun VIP Add-On Pack","Soccer Mania","Blocks magazine issue 30","Carnage","Basic Bucket, Blue","Town Environment","Ambulance","Wolverine Construction Figure","Legends of Chima Sorting System","Mia's Summer Play Cube","Bonus/Value Pack","Build Your Own LEGO Escape Room parts","LEGO Minifigures - Marvel Studios Series - Complete","Mobile Crane","Monkey","Heartlake City Pool"],[2012,2019,2015,1998,1995,2018,2023,1991,2021,2020,2009,2016,2004,2020,2010,2004,2010,2016,2022,1992,2002,2020,2017,2021,2006,2010,2004,2009,2003,1998,2002,1995,2009,2009,2002,2021,2016,2016,2015,2023,1980,2015,2006,1997,2002,2020,2022,2001,1982,2012,2021,2018,2020,2020,1983,1975,1996,2002,2015,2012,2021,2023,1989,2008,2012,1999,1992,2021,2019,2007,1970,2022,1991,2010,2021,2018,1973,1990,2016,2009,1985,2020,2016,2019,2023,2002,2017,2021,1998,1986,1985,2023,2014,2020,2010,2023,2021,1978,2014,2013],["Gear","Star Wars","Collectable Minifigures","Town","Books","Books","Friends","Books","Books","Collectable Minifigures","Gear","Collectable Minifigures","Explore","Collectable Minifigures","Games","Castle","Games","Friends","Ninjago","Service Packs","Island Xtreme Stunts","City","Friends","City","Gear","Toy Story","Bionicle","Star Wars","Racers","Town","Explore","Castle","Gear","Gear","Galidor","Gear","City","Nexo Knights","Friends","Gear","Fabuland","Star Wars","Technic","Duplo","Town","City","Technic","Baby","Duplo","Ninjago","City","Unikitty","Hidden Side","Promotional","Trains","PreSchool","Space","Duplo","Education","City","Ninjago","Gear","Service Packs","Star Wars","Technic","Books","Pirates","Collectable Minifigures","Classic","Gear","Duplo","Gear","Duplo","Books","Friends","Duplo","Homemaker","Town","Miscellaneous","Gear","Promotional","Gear","Elves","Star Wars","Miscellaneous","Gear","Books","Marvel Super Heroes","Basic","Dacta","Town","Marvel Super Heroes","Gear","Friends","Duplo","Miscellaneous","Collectable Minifigures","Town","Promotional","Friends"],["Miscellaneous","Licensed","Miscellaneous","Modern day","Miscellaneous","Miscellaneous","Modern day","Miscellaneous","Miscellaneous","Miscellaneous","Miscellaneous","Miscellaneous","Pre-school","Miscellaneous","Miscellaneous","Historical","Miscellaneous","Modern day","Action/Adventure","Miscellaneous","Racing","Modern day","Modern day","Modern day","Miscellaneous","Licensed","Constraction","Licensed","Racing","Modern day","Pre-school","Historical","Miscellaneous","Miscellaneous","Licensed","Miscellaneous","Modern day","Action/Adventure","Modern day","Miscellaneous","Junior","Licensed","Technical","Pre-school","Modern day","Modern day","Technical","Pre-school","Pre-school","Action/Adventure","Modern day","Licensed","Action/Adventure","Miscellaneous","Modern day","Pre-school","Action/Adventure","Pre-school","Educational","Modern day","Action/Adventure","Miscellaneous","Miscellaneous","Licensed","Technical","Miscellaneous","Historical","Miscellaneous","Basic","Miscellaneous","Pre-school","Miscellaneous","Pre-school","Miscellaneous","Modern day","Pre-school","Vintage","Modern day","Miscellaneous","Miscellaneous","Miscellaneous","Miscellaneous","Action/Adventure","Licensed","Miscellaneous","Miscellaneous","Miscellaneous","Licensed","Basic","Educational","Modern day","Licensed","Miscellaneous","Modern day","Pre-school","Miscellaneous","Miscellaneous","Modern day","Miscellaneous","Modern day"],["Gear","Normal","Random","Normal","Book","Book","Normal","Book","Book","Normal","Gear","Normal","Normal","Normal","Normal","Collection","Normal","Normal","Other","Normal","Normal","Normal","Normal","Collection","Gear","Normal","Normal","Normal","Normal","Normal","Normal","Normal","Gear","Gear","Normal","Gear","Normal","Normal","Normal","Gear","Normal","Other","Normal","Normal","Normal","Normal","Collection","Normal","Normal","Extended","Other","Normal","Other","Extended","Normal","Normal","Normal","Normal","Extended","Normal","Other","Gear","Normal","Normal","Normal","Book","Normal","Collection","Normal","Gear","Normal","Gear","Normal","Book","Other","Normal","Normal","Normal","Normal","Gear","Normal","Gear","Normal","Normal","Normal","Gear","Book","Normal","Normal","Normal","Normal","Normal","Gear","Normal","Collection","Normal","Collection","Normal","Normal","Normal"],[4.99,19.99,null,null,null,null,null,null,null,null,12.99,null,null,null,19.99,null,19.99,4.99,null,null,null,29.99,29.99,null,null,79.98999999999999,null,24.99,null,null,null,null,24.99,14.99,null,null,9.99,9.99,89.98999999999999,null,null,null,null,null,null,39.99,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,9.99,null,39.99,139.99,null,null,4.99,19.99,49.99,null,null,null,null,null,19.99,null,null,null,null,null,5.99,99.98999999999999,39.99,null,null,null,59.99,null,null,null,32.99,39.99,null,null,null,null,null,null,39.99],[null,77,null,96,null,null,84,null,null,7,null,6,10,9,204,94,185,50,7,3,16,238,307,344,null,584,27,155,218,22,36,17,null,null,3,null,83,75,692,null,1,20,200,47,2,301,949,2,21,31,7,14,9,127,52,20,53,9,30,32,3,null,3,392,1308,null,34,null,300,null,20,null,38,null,44,23,131,35,816,null,176,null,1014,373,120,null,null,546,400,605,72,327,null,50,68,49,98,55,46,423],[null,2,null,3,null,null,null,null,null,1,3,1,1,1,5,null,2,null,1,null,1,2,2,null,null,3,null,5,null,1,2,1,null,null,null,null,4,1,3,null,1,null,null,3,null,4,null,null,1,1,1,1,1,null,null,null,1,1,null,1,1,null,null,2,null,null,1,null,null,24,null,null,3,null,null,null,null,2,8,null,null,null,3,4,null,null,null,null,null,8,2,null,null,1,null,null,12,1,null,2],[3.7,3.5,0,0,0,0,3.8,0,0,3.8,0,3.9,0,4,3.9,0,3.6,3.4,0,0,3.3,3.9,3.6,0,0,4,3.8,3.9,0,0,0,0,0,0,1.8,0,3.7,3.7,3.9,0,0,3.3,0,0,0,3.7,0,0,0,3.6,0,3.3,0,0,4.5,0,3.5,0,0,3.3,0,0,0,4.1,4,0,3,0,3.2,4.4,0,0,0,3.7,0,4.3,0,3.2,0,0,0,0,4.5,3.7,3.7,0,0,4,0,0,3.7,0,0,0,0,0,4.3,0,0,3.4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>setID<\/th>\n      <th>name<\/th>\n      <th>year<\/th>\n      <th>theme<\/th>\n      <th>themeGroup<\/th>\n      <th>category<\/th>\n      <th>US_retailPrice<\/th>\n      <th>pieces<\/th>\n      <th>minifigs<\/th>\n      <th>rating<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,3,7,8,9,10]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"setID","targets":1},{"name":"name","targets":2},{"name":"year","targets":3},{"name":"theme","targets":4},{"name":"themeGroup","targets":5},{"name":"category","targets":6},{"name":"US_retailPrice","targets":7},{"name":"pieces","targets":8},{"name":"minifigs","targets":9},{"name":"rating","targets":10}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+
+]
+
+
+---
+# Data Wrangling Cheat Sheet &lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.center[
+&lt;a href='https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf' target='_new'&gt;&lt;img src='images/data-transformation.png' width='700' /&gt;&lt;/a&gt;
+]
+
+
+---
+# Tidyverse vs Base R &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/pipe.png" class="title-hex"&gt;
+
+.center[
+&lt;a href='images/R_Syntax_Comparison.jpeg' target='_new'&gt;&lt;img src="images/R_Syntax_Comparison.jpeg" width='700' /&gt;&lt;/a&gt;
+]
+
+
+---
+class: font90
+# Pipes `%&gt;%` and `|&gt;` &lt;img src="images/hex/magrittr.png" class="title-hex"&gt;
+
+&lt;img src='images/magrittr_pipe.jpg' align='right' width='200' /&gt;
+
+.font90[
+The pipe operator (`%&gt;%`) introduced with the `magrittr` R package allows for the chaining of R operations. As of version 4.1, R now has a native pipe operator (`|&gt;`). They take the output from the left-hand side and passes it as the first parameter to the function on the right-hand side.
+]
+
+.pull-left[
+You can do this in two steps:
+
+
+``` r
+tab_out &lt;- table(legosets$category)
+prop.table(tab_out)
+```
+
+Or as nested function calls.
+
+
+``` r
+prop.table(table(legosets$category))
+```
+]
+.pull-right[
+Using the pipe (`|&gt;`) operator we can chain these calls in a what is arguably a more readable format:
+
+
+``` r
+table(legosets$category) |&gt; prop.table()
+```
+]
+
+&lt;hr /&gt;
+
+
+```
+## 
+##        Book  Collection    Extended        Gear      Normal       Other 
+## 0.034468546 0.031377196 0.028749549 0.154515946 0.684682364 0.062599825 
+##      Random 
+## 0.003606574
+```
+
+---
+# Filter &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.center[
+&lt;img src='images/dplyr_filter_sm.png' width='800' /&gt;
+]
+
+---
+# Logical Operators
+
+* `!a` - TRUE if a is FALSE
+* `a == b` - TRUE if a and be are equal
+* `a != b` - TRUE if a and b are not equal
+* `a &gt; b` - TRUE if a is larger than b, but not equal
+* `a &gt;= b` - TRUE if a is larger or equal to b
+* `a &lt; b` - TRUE if a is smaller than be, but not equal
+* `a &lt;= b` - TRUE if a is smaller or equal to b
+* `a %in% b` - TRUE if a is in b where b is a vector  
+
+``` r
+which( letters %in% c('a','e','i','o','u') )
+```
+
+```
+## [1]  1  5  9 15 21
+```
+* `a | b` - TRUE if a *or* b are TRUE
+* `a &amp; b` - TRUE if a *and* b are TRUE
+* `isTRUE(a)` - TRUE if a is TRUE
+
+---
+# Filter &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+### `dplyr`
+
+
+``` r
+mylego &lt;- legosets %&gt;% filter(themeGroup == 'Educational' &amp; year &gt; 2015)
+```
+
+### Base R
+
+
+``` r
+mylego &lt;- legosets[legosets$themeGroup == 'Educational' &amp; legosets$year &gt; 2015,]
+```
+
+&lt;hr /&gt;
+
+
+``` r
+nrow(mylego)
+```
+
+```
+## [1] 99
+```
+
+---
+# Select &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+### `dplyr`
+
+
+``` r
+mylego &lt;- mylego %&gt;% select(setID, pieces, theme, availability, US_retailPrice, minifigs)
+```
+
+### Base R
+
+
+``` r
+mylego &lt;- mylego[,c('setID', 'pieces', 'theme', 'availability', 'US_retailPrice', 'minifigs')]
+```
+
+&lt;hr /&gt;
+
+
+``` r
+head(mylego, n = 4)
+```
+
+```
+##   setID pieces     theme    availability US_retailPrice minifigs
+## 1 26803    103 Education {Not specified}             NA        6
+## 2 26689    142 Education {Not specified}             NA        4
+## 3 26804     98 Education {Not specified}             NA        6
+## 4 26277    188 Education     Educational          94.95       NA
+```
+
+---
+# Relocate &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.center[
+&lt;img src='images/dplyr_relocate.png' width='800' /&gt;
+]
+
+---
+# Relocate &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+### `dplyr`
+
+
+``` r
+mylego %&gt;% relocate(where(is.numeric), .after = where(is.character)) %&gt;% head(n = 3)
+```
+
+```
+##       theme    availability setID pieces US_retailPrice minifigs
+## 1 Education {Not specified} 26803    103             NA        6
+## 2 Education {Not specified} 26689    142             NA        4
+## 3 Education {Not specified} 26804     98             NA        6
+```
+
+### Base R
+
+
+``` r
+mylego2 &lt;- mylego[,c('theme', 'availability', 'setID', 'pieces', 'US_retailPrice', 'minifigs')]
+head(mylego2, n = 3)
+```
+
+```
+##       theme    availability setID pieces US_retailPrice minifigs
+## 1 Education {Not specified} 26803    103             NA        6
+## 2 Education {Not specified} 26689    142             NA        4
+## 3 Education {Not specified} 26804     98             NA        6
+```
+
+
+---
+# Rename &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.center[
+&lt;img src='images/rename_sm.jpg' width='1000' /&gt;
+]
+
+---
+# Rename &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+### `dplyr`
+
+
+``` r
+mylego %&gt;% dplyr::rename(USD = US_retailPrice) %&gt;% head(n = 3)
+```
+
+```
+##   setID pieces     theme    availability USD minifigs
+## 1 26803    103 Education {Not specified}  NA        6
+## 2 26689    142 Education {Not specified}  NA        4
+## 3 26804     98 Education {Not specified}  NA        6
+```
+
+### Base R
+
+
+``` r
+names(mylego2)[5] &lt;- 'USD'
+head(mylego2, n = 3)
+```
+
+```
+##       theme    availability setID pieces USD minifigs
+## 1 Education {Not specified} 26803    103  NA        6
+## 2 Education {Not specified} 26689    142  NA        4
+## 3 Education {Not specified} 26804     98  NA        6
+```
+
+---
+# Mutate &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.center[
+&lt;img src='images/dplyr_mutate.png' width='700' /&gt;
+]
+
+---
+# Mutate &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+### `dplyr`
+
+
+``` r
+mylego %&gt;% filter(!is.na(pieces) &amp; !is.na(US_retailPrice)) %&gt;% 
+	mutate(Price_per_piece = US_retailPrice / pieces) %&gt;% head(n = 3)
+```
+
+```
+##   setID pieces     theme availability US_retailPrice minifigs Price_per_piece
+## 1 26277    188 Education  Educational          94.95       NA       0.5050532
+## 2 25949    280 Education  Educational         224.95       NA       0.8033929
+## 3 25954      1 Education  Educational          14.95       NA      14.9500000
+```
+
+### Base R
+
+
+``` r
+mylego2 &lt;- mylego[!is.na(mylego$US_retailPrice) &amp; !is.na(mylego$Price_per_piece),]
+mylego2$Price_per_piece &lt;- mylego2$Price_per_piece / mylego2$US_retailPrice
+head(mylego2, n = 3)
+```
+
+```
+## [1] setID           pieces          theme           availability   
+## [5] US_retailPrice  minifigs        Price_per_piece
+## &lt;0 rows&gt; (or 0-length row.names)
+```
+
+
+---
+# Group By and Summarize &lt;img src="images/hex/tidyverse.png" class="title-hex"&gt;&lt;img src="images/hex/dplyr.png" class="title-hex"&gt;
+
+.code80[
+
+``` r
+legosets %&gt;% group_by(themeGroup) %&gt;% summarize(mean_price = mean(US_retailPrice, na.rm = TRUE),
+												sd_price = sd(US_retailPrice, na.rm = TRUE),
+												median_price = median(US_retailPrice, na.rm = TRUE),
+												n = n(),
+												missing = sum(is.na(US_retailPrice)))
+```
+
+```
+## # A tibble: 17 × 6
+##    themeGroup       mean_price sd_price median_price     n missing
+##    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;int&gt;   &lt;int&gt;
+##  1 Action/Adventure       40.2     38.9         30.0  1474     779
+##  2 Art and crafts         34.9     47.7         17.5    97       9
+##  3 Basic                  21.6     19.2         15.0   873     733
+##  4 Constraction           16.4     12.4         13.0   502     284
+##  5 Educational           182.     188.         130.    503     465
+##  6 Girls                  35.8     24.0         23.0   240     227
+##  7 Historical             34.2     32.4         20.0   473     400
+##  8 Junior                 22.0     10.1         20.0   228     165
+##  9 Licensed               53.3     71.7         30.0  2775    1066
+## 10 Miscellaneous          20.7     29.2         13.0  6253    3961
+## 11 Model making           74.3     92.1         40.0   771     384
+## 12 Modern day             38.2     35.6         30.0  2469    1535
+## 13 Pre-school             30.8     22.7         25.0  1562    1103
+## 14 Racing                 26.8     26.5         15.0   270     176
+## 15 Technical              82.8     95.3         50.0   607     327
+## 16 Vintage               NaN       NA           NA     306     306
+## 17 &lt;NA&gt;                  NaN       NA           NA       6       6
+```
+]
+
+---
+# Describe and Describe By
+
+
+``` r
+library(psych)
+describe(legosets$US_retailPrice)
+```
+
+```
+##    vars    n  mean   sd median trimmed   mad  min    max range skew kurtosis
+## X1    1 7483 38.96 56.5  19.99    27.7 17.79 1.49 849.99 848.5 5.32    44.74
+##      se
+## X1 0.65
+```
+
+
+
+
+``` r
+describeBy(legosets$US_retailPrice, group = legosets$availability, mat = TRUE, skew = FALSE)
+```
+
+```
+##      item                group1 vars    n      mean        sd median   min    max range         se
+## X11     1       {Not specified}    1 1831  26.84733  39.96747  19.99  1.49 789.99 788.5  0.9340335
+## X12     2           Educational    1   12 212.86667 105.88283 222.45 14.95 399.95 385.0 30.5657410
+## X13     3        LEGO exclusive    1 1039  57.21203 106.63125  12.99  1.99 849.99 848.0  3.3080857
+## X14     4    LEGOLAND exclusive    1    2   4.99000   0.00000   4.99  4.99   4.99   0.0  0.0000000
+## X15     5              Not sold    1    1  12.99000        NA  12.99 12.99  12.99   0.0         NA
+## X16     6           Promotional    1    5   4.79000   0.83666   4.99  3.99   5.99   2.0  0.3741657
+## X17     7 Promotional (Airline)    1    0       NaN        NA     NA   Inf   -Inf  -Inf         NA
+## X18     8                Retail    1 4290  37.55889  38.44918  24.99  1.99 699.99 698.0  0.5870275
+## X19     9      Retail - limited    1  302  63.54381  70.91908  39.99  2.49 449.99 447.5  4.0809343
+## X110   10               Unknown    1    1   3.99000        NA   3.99  3.99   3.99   0.0         NA
+```
+
+
+---
+# Additional Resources
+
+For data wrangling:
+
+* `dplyr` website: https://dplyr.tidyverse.org
+* R for Data Science book: https://r4ds.had.co.nz/wrangle-intro.html
+* Wrangling penguins tutorial: https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome
+* Data transformation cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+
+
+---
+class: left, font140
+# One Minute Paper
+
+.pull-left[
+1. What was the most important thing you learned during this class?
+2. What important question remains unanswered for you?
+]
+.pull-right[
+&lt;img src="02-Summarizing_Data1_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+https://forms.gle/ESBAdHRhzT65fW6c6
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLanguage": "R",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<!-- Source: https://www.garrickadenbuie.com/blog/xaringan-tip-logo-all-slides/ -->
+<style>
+.logo {
+  background-image: url(images/hex/DATA606.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 2em;
+  right: 0.5em;
+  width: 55px;
+  height: 64px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

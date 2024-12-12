@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Inference for Numerical Data</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D." />
+    <meta name="date" content="2024-10-23" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="assets/fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle, inverse, title-slide
+
+# Inference for Numerical Data
+## DATA 606 - Statistics &amp; Probability for Data Analytics
+### Jason Bryer, Ph.D., Angela Lui, Ph.D., and George Hagstrom, Ph.D.
+### October 23, 2024
+
+
+---
+# One Minute Paper Results
+
+
+
+.pull-left[
+**What was the most important thing you learned during this class?**
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+**What important question remains unanswered for you?**
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Data Project Proposal
+
+Due April 1&lt;sup&gt;st&lt;/sup&gt;ish Select a dataset that interests you. For the proposal, you need to answer the questions below.
+
+.font80[
+* Research question
+* What type of statistical test do you plan to do (e.g. t-test, ANOVA, regression, logistic regression, chi-squared, etc.)
+* What are the cases, and how many are there?
+* Describe the method of data collection.
+* What type of study is this (observational/experiment)?
+* Data Source: If you collected the data, state self-collected. If not, provide a citation/link.
+* Response: What is the response variable, and what type is it (numerical/categorical)?
+* Explanatory: What is the explanatory variable(s), and what type is it (numerical/categorical)?
+* Relevant summary statistics
+]
+
+More information including template and suggested datasets located here: https://spring2024.data606.net/assignments/project/
+
+
+
+---
+# High School &amp; Beyond Survey  
+
+200 randomly selected students completed the reading and writing test of the High School and Beyond survey. The results appear to the right. Does there appear to be a difference?
+
+.pull-left[
+
+``` r
+data(hsb2) # in openintro package
+hsb2.melt &lt;- melt(hsb2[,c('id','read', 'write')], id='id')
+ggplot(hsb2.melt, aes(x=variable, y=value)) + 	geom_boxplot() + 
+	geom_point(alpha=0.2, color='blue') + xlab('Test') + ylab('Score')
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+``` r
+ggplot(hsb2.melt, aes(x=variable, y=value)) +
+	ggdist::stat_halfeye() +
+	geom_point(color='blue', position = position_nudge(x = -.05), pch = '-', size = 5) + 
+	xlab('Test') + ylab('Score')
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+# High School &amp; Beyond Survey  
+
+
+``` r
+head(hsb2)
+```
+
+```
+## # A tibble: 6 × 11
+##      id gender race  ses    schtyp prog        read write  math science socst
+##   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt;
+## 1    70 male   white low    public general       57    52    41      47    57
+## 2   121 female white middle public vocational    68    59    53      63    61
+## 3    86 male   white high   public general       44    33    54      58    31
+## 4   141 male   white high   public vocational    63    44    47      53    56
+## 5   172 male   white middle public academic      47    52    57      53    61
+## 6   113 male   white middle public academic      44    52    51      63    61
+```
+
+Are the reading and writing scores of each student independent of each other?
+
+
+---
+# Analyzing Paired Data  
+
+.pull-left[
+* When two sets of observations are not independent, they are said to be paired.
+* To analyze these type of data, we often look at the difference.
+
+
+``` r
+hsb2$diff &lt;- hsb2$read - hsb2$write
+head(hsb2$diff)
+```
+
+```
+## [1]  5  9 11 19 -5 -8
+```
+
+
+``` r
+ggplot(hsb2, aes(x = diff)) + 
+	geom_histogram(aes(y = ..density..), bins = 15, color = 1, fill = 'white') + 
+	geom_density(size = 2)
+```
+]
+.pull-right[
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Setting the Hypothesis
+
+What are the hypothesis for testing if there is a difference between the average reading and writing scores?
+
+`\(H_0\)`: There is no difference between the average reading and writing scores.
+
+`$$\mu_{diff} = 0$$`
+
+`\(H_A\)`: There is a difference between the average reading and writing score.
+
+`$$\mu_{diff} \ne 0$$`
+
+---
+class: font120
+# Nothing new here...
+
+* The analysis is no different that what we have done before.
+
+* We have data from one sample: differences.
+
+* We are testing to see if the average difference is different that 0.
+
+
+---
+# Calculating the test-statistic and the p-value 
+
+The observed average difference between the two scores is -0.545 points and the standard deviation of the difference is 8.887 points. Do these data provide convincing evidence of a difference between the average scores on the two exams (use `\(\alpha = 0.05\)`)?
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Calculating the test-statistic and the p-value 
+
+`$$Z = \frac{-0.545 - 0}{ \frac{8.887}{\sqrt{200}} } = \frac{-0.545}{0.628} = -0.87$$`
+`$$p-value = 0.1949 \times 2 = 0.3898$$`
+
+Since p-value &gt; 0.05, we **fail to reject the null hypothesis**. That is, the data do not provide evidence that there is a statistically significant difference between the average reading and writing scores.
+
+
+``` r
+2 * pnorm(mean(hsb2$diff), mean=0, sd=sd(hsb2$diff)/sqrt(nrow(hsb2)))
+```
+
+```
+## [1] 0.3857741
+```
+
+---
+# Evaluating the null hypothesis
+
+## Interpretation of the p-value
+
+The probability of obtaining a random sample of 200 students where the average difference between the reading and writing scores is at least 0.545 (in either direction), if in fact the true average difference between the score is 0, is 38%.
+
+--
+## Calculating 95% Confidence Interval
+
+`$$-0.545\pm 1.96\frac { 8.887 }{ \sqrt { 200 }  } =-0.545\pm 1.96\times 0.628=(-1.775, 0.685)$$`
+
+Note that the confidence interval spans zero!
+
+---
+# Visualizing Dependent Sample Tests
+
+
+``` r
+# remotes::install_github('briandk/granovaGG')
+library(granovaGG)
+granovagg.ds(as.data.frame(hsb2[,c('read', 'write')]))
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# SAT Scores by Sex
+
+
+``` r
+data(sat)
+head(sat)
+```
+
+```
+##   Verbal.SAT Math.SAT Sex
+## 1        450      450   F
+## 2        640      540   F
+## 3        590      570   M
+## 4        400      400   M
+## 5        600      590   M
+## 6        610      610   M
+```
+
+
+
+Is there a difference in math scores between males and females?
+
+---
+# SAT Scores by Sex 
+
+.pull-left[
+
+``` r
+tab &lt;- describeBy(sat$Math.SAT, 
+		   group=sat$Sex, 
+		   mat=TRUE, skew=FALSE)
+tab[,c(2,4:7)]
+```
+
+```
+##     group1  n     mean        sd median
+## X11      F 82 597.6829 103.70065    625
+## X12      M 80 626.8750  90.35225    645
+```
+]
+
+.pull-right[
+
+``` r
+ggplot(sat, aes(x=Sex, y=Math.SAT)) + 
+	geom_boxplot() +
+	geom_point(data = tab, aes(x=group1, y=mean), 
+			   color='blue', size=4)
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Distributions  
+
+
+
+``` r
+ggplot(sat, aes(x=Math.SAT, color = Sex)) + geom_density()
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: font120
+# 95% Confidence Interval
+
+We wish to calculate a 95% confidence interval for the average difference between SAT scores for males and females.
+
+Assumptions:
+
+1. Independence within groups.
+
+2. Independence between groups.
+
+3. Sample size/skew
+
+---
+# Confidence Interval for Difference Between Two Means
+
+* All confidence intervals have the same form: point estimate ± ME
+* And all ME = critical value * SE of point estimate
+* In this case the point estimate is `\(\bar{x}_1 - \bar{x}_2\)`
+Since the sample sizes are large enough, the critical value is z*
+So the only new concept is the standard error of the difference between two means...
+
+.pull-left[
+Standard error for difference in SAT scores
+
+`$$SE_{ (\bar { x } _{ M }-\bar { x } _{ F }) }=\sqrt { \frac { { s }_{ M }^{ 2 } }{ { n }_{ M } } + \frac { { s }_{ F }^{ 2 } }{ { n }_{ F } }  }$$`
+
+
+`$$SE_{ (\bar { x } _{ M }-\bar { x } _{ F }) } = \sqrt { \frac { 90.4 }{ 80 } +\frac { 103.7 }{ 82 }  } =1.55$$`
+]
+
+.pull-right[
+Calculate the 95% confidence interval:
+
+`$$(\bar{x}_{M} - \bar{x}_{F}) \pm 1.96 SE_{ (\bar { x } _{ M }-\bar { x } _{ F }) }$$`
+`$$(626.9 - 597.7) \pm 1.96 \times 1.55$$`
+`$$29.2 \pm 3.038 = (26.162, 32.238)$$`
+
+]
+
+---
+# Visualizing independent sample tests
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# What about smaller sample sizes?
+
+What if you want to compare the quality of one batch of Guinness beer to the next?
+
+--
+
+.pull-left[
+* Sample sizes necessarily need to be small.
+* The CLT states that the sampling distribution approximates normal as n -&gt; Infinity
+* Need an alternative to the normal distribution.
+* The *t* distribution was developed by William Gosset (under the pseudonym *student*) to estimate means when the sample size is small.
+
+Confidence interval is estimated using
+
+`$$\overline { x } \pm { t }_{ df }^{ * }SE$$`
+
+Where *df* is the degrees of freedom (*df* = *n* -1)
+]
+
+.pull-right[.center[
+![](images/William_Sealy_Gosset.jpg)
+]]
+
+---
+# *t*-Distributions 
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# *t*-test in R 
+
+The `pt` and `qt` will give you the *p*-value and critical value from the *t*-distribution, respectively.
+
+.pull-left[
+
+Critical value for p = 0.05, degrees of freedom = 10
+
+
+``` r
+qt(0.025, df = 10)
+```
+
+```
+## [1] -2.228139
+```
+
+p-value for a critical value of 2, degrees of freedom = 10
+
+
+``` r
+pt(2, df=10)
+```
+
+```
+## [1] 0.963306
+```
+
+]
+.pull-right[
+
+The `t.test` function will calculate a null hyphothesis test using the *t*-distribution.
+
+
+``` r
+t.test(Math.SAT ~ Sex, data = sat)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  Math.SAT by Sex
+## t = -1.9117, df = 158.01, p-value = 0.05773
+## alternative hypothesis: true difference in means between group F and group M is not equal to 0
+## 95 percent confidence interval:
+##  -59.3527145   0.9685682
+## sample estimates:
+## mean in group F mean in group M 
+##        597.6829        626.8750
+```
+
+
+
+]
+
+
+---
+class: inverse, middle, center
+# Analysis of Variancne (ANOVA)
+
+
+---
+class: font90
+# Analysis of Variance (ANOVA)
+
+The goal of ANOVA is to test whether there is a discernible difference between the means of several groups.
+
+**Hand Washing Example**
+
+Is there a difference between washing hands with:  water only, regular soap, antibacterial soap (ABS), and antibacterial spray (AS)?
+
+* Each tested with 8 replications
+* Treatments randomly assigned
+
+For ANOVA:
+
+* The means all differ.
+* Is this just natural variability?
+* Null hypothesis:  All the means are the same.
+* Alternative hypothesis:  The means are not all the same.
+
+Source: De Veaux, R.D., Velleman, P.F., &amp; Bock, D.E. (2014). *Intro Stats, 4th Ed.* Pearson.
+
+---
+# Boxplot
+
+
+``` r
+ggplot(hand_washing, aes(x = Method, y = Bacterial_Counts)) +  geom_boxplot() +
+    geom_beeswarm(aes(color = Method)) + theme(legend.position = 'none')
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: font90
+# Descriptive Statistics
+
+
+``` r
+desc &lt;- psych::describeBy(hand_washing$Bacterial_Counts, group = hand_washing$Method, mat = TRUE, skew = FALSE)
+names(desc)[2] &lt;- 'Method' # Rename the grouping column
+desc$Var &lt;- desc$sd^2 # We will need the variance latter, so calculate it here
+desc
+```
+
+```
+##     item             Method vars n  mean       sd median min max range        se       Var
+## X11    1      Alcohol Spray    1 8  37.5 26.55991   34.5   5  82    77  9.390345  705.4286
+## X12    2 Antibacterial Soap    1 8  92.5 41.96257   91.5  20 164   144 14.836008 1760.8571
+## X13    3               Soap    1 8 106.0 46.95895  105.0  51 207   156 16.602496 2205.1429
+## X14    4              Water    1 8 117.0 31.13106  114.5  74 170    96 11.006492  969.1429
+```
+
+.pull-left[
+
+``` r
+( k &lt;- length(unique(hand_washing$Method)) )
+```
+
+```
+## [1] 4
+```
+
+``` r
+( n &lt;- nrow(hand_washing) )
+```
+
+```
+## [1] 32
+```
+]
+.pull-right[
+
+``` r
+( grand_mean &lt;- mean(hand_washing$Bacterial_Counts) )
+```
+
+```
+## [1] 88.25
+```
+
+``` r
+( grand_var &lt;- var(hand_washing$Bacterial_Counts) )
+```
+
+```
+## [1] 2237.613
+```
+
+``` r
+( pooled_var &lt;- mean(desc$Var) )
+```
+
+```
+## [1] 1410.143
+```
+]
+
+---
+# Contrasts
+
+A contrast is a linear combination of two or more factor level means with coefficients that sum to zero.
+
+
+``` r
+desc$contrast &lt;- (desc$mean - mean(desc$mean))
+mean(desc$contrast) # Should be 0!
+```
+
+```
+## [1] 0
+```
+
+``` r
+desc
+```
+
+```
+##     item             Method vars n  mean       sd median min max range        se       Var contrast
+## X11    1      Alcohol Spray    1 8  37.5 26.55991   34.5   5  82    77  9.390345  705.4286   -50.75
+## X12    2 Antibacterial Soap    1 8  92.5 41.96257   91.5  20 164   144 14.836008 1760.8571     4.25
+## X13    3               Soap    1 8 106.0 46.95895  105.0  51 207   156 16.602496 2205.1429    17.75
+## X14    4              Water    1 8 117.0 31.13106  114.5  74 170    96 11.006492  969.1429    28.75
+```
+
+---
+# Plotting using contrasts
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+# Grade Mean and Unit Line (slope = 1, intercept = `\(\bar{x}\)`)
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Within Group Variance (error)
+
+`$$SS_{within} = \sum^{}_{k} \sum^{}_{i} (\bar{x}_{ik} -\bar{x}_{k} )^{2}$$`
+---
+# Within Group Variance (error)
+
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Within Group Variance (error)
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Within Group Variance (error)
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Between Group Variance
+
+`$$SS_{between} = \sum^{}_{k} n_{k}(\bar{x}_{k} -\bar{x} )^{2}$$`
+
+
+---
+# Between Group Variance
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Between Group Variance
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Mean Square
+
+| Source                  | Sum of Squares                                              | *df*  | MS                                   |
+| ------------------------|:-----------------------------------------------------------:|:-----:|:------------------------------------:|
+| Between Group (Treatment) | `\(\sum^{}_{k} n_{k}(\bar{x}_{k} -\bar{x} )^{2}\)`              | k - 1 | `\(\frac{SS_{between}}{df_{between}}\)` 
+| Within Group (Error)    | `\(\sum^{}_{k} \sum^{}_{i} (\bar{x}_{ik} -\bar{x}_{k} )^{2}\)`  | n - k | `\(\frac{SS_{within}}{df_{within}}\)`    |
+| Total                   | `\(\sum_{n} ({x}_{n} -\bar{x} )^{2}\)`      | n - 1 |                                      |
+
+
+
+---
+# `\(MS_{Between} / MS_{Within}\)` = F-Statistic
+
+Mean squares can be represented as squares, hence the ratio of area of the two rectagles is equal to `\(\frac{MS_{Between}}{MS_{Within}}\)` which is the F-statistic.
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Washing type all the same?
+
+`\(H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4\)`
+
+Variance components we need to evaluate the null hypothesis:
+
+* Between Sum of Squares: `\(SS_{between} = \sum^{}_{k} n_{k}(\bar{x}_{k} -\bar{x} )^{2}\)`
+
+* Within Sum of Squares: `\(SS_{within} = \sum^{}_{k} \sum^{}_{i} (\bar{x}_{ik} -\bar{x}_{k} )^{2}\)`
+
+* Between degrees of freedom: `\(df_{between} =  k - 1\)` (k = number of groups)
+
+* Within degrees of freedom: `\(df_{within} =  k(n - 1)\)`
+
+* Mean square between (aka treatment): `\(MS_{T} = \frac{SS_{between}}{df_{between}}\)`
+
+* Mean square within (aka error): `\(MS_{E} = \frac{SS_{within}}{df_{within}}\)`
+
+
+
+
+
+---
+# Comparing `\(MS_T\)` (between) and `\(MS_E\)` (within)
+
+.pull-left[
+Assume each washing method has the same variance.
+
+Then we can pool them all together to get the pooled variance `\({ s }_{ p }^{ 2 }\)`
+
+Since the sample sizes are all equal, we can average the four variances: `\({ s }_{ p }^{ 2 } = 1410.14\)`
+
+
+``` r
+mean(desc$Var)
+```
+
+```
+## [1] 1410.143
+```
+]
+
+--
+
+.pull-right[
+`\(MS_T\)`
+
+* Estimates `\({ s }_{ p }^{ 2 }\)` if `\(H_0\)` is true
+* Should be larger than `\({ s }_{ p }^{ 2 }\)` if `\(H_0\)` is false
+
+`\(MS_E\)`
+
+* Estimates `\({ s }_{ p }^{ 2 }\)` whether `\(H_0\)` is true or not
+* If `\(H_0\)` is true, both close to `\({ s }_{ p }^{ 2 }\)`, so `\(MS_T\)` is close to `\(MS_E\)`
+
+Comparing
+
+* If `\(H_0\)` is true, `\(\frac{MS_T}{MS_E}\)` should be close to 1
+* If `\(H_0\)` is false, `\(\frac{MS_T}{MS_E}\)` tends to be &gt; 1
+]
+
+---
+class: font120
+# The F-Distribution 
+
+* How do we tell whether `\(\frac{MS_T}{MS_E}\)` is larger enough to not be due just to random chance?
+
+* `\(\frac{MS_T}{MS_E}\)` follows the F-Distribution
+	* Numerator df:  k - 1 (k = number of groups)
+	* Denominator df:  k(n - 1)  
+	* n = # observations in each group
+	
+* `\(F = \frac{MS_T}{MS_E}\)` is called the F-Statistic.
+
+A Shiny App by Dr. Dudek to explore the F-Distribution: &lt;a href='https://shiny.rit.albany.edu/stat/fdist/' window='_new'&gt;https://shiny.rit.albany.edu/stat/fdist/&lt;/a&gt;
+
+---
+# The F-Distribution (cont.) 
+
+
+``` r
+df.numerator &lt;- 4 - 1
+df.denominator &lt;- 4 * (8 - 1)
+DATA606::F_plot(df.numerator, df.denominator, cv = qf(0.95, df.numerator, df.denominator))
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/fdistribution-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: font120
+# ANOVA Table
+
+
+| Source                  | Sum of Squares                                              | *df*  | MS                                   | F                                   | p                              |
+| ------------------------|:-----------------------------------------------------------:|:-----:|:------------------------------------:|:-----------------------------------:|--------------------------------|
+| Between Group (Treatment) | `\(\sum^{}_{k} n_{k}(\bar{x}_{k} -\bar{x} )^{2}\)`              | k - 1 | `\(\frac{SS_{between}}{df_{between}}\)`  | `\(\frac{MS_{between}}{MS_{within}}\)`  | area to right of `\(F_{k-1,n-k}\)` |
+| Within Group (Error)    | `\(\sum^{}_{k} \sum^{}_{i} (\bar{x}_{ik} -\bar{x}_{k} )^{2}\)`  | n - k | `\(\frac{SS_{within}}{df_{within}}\)`    |                                     |                                |
+| Total                   | `\(\sum_{n} ({x}_{n} -\bar{x} )^{2}\)`      | n - 1 |                                      |                                     |                                |
+
+
+
+``` r
+aov(Bacterial_Counts ~ Method, data = hand_washing) |&gt; summary()
+```
+
+```
+##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## Method       3  29882    9961   7.064 0.00111 **
+## Residuals   28  39484    1410                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+
+---
+# Assumptions and Conditions
+
+* To check the assumptions and conditions for ANOVA, always look at  the side-by-side boxplots.
+	* Check for outliers within any group.
+	* Check for similar spreads.
+	* Look for skewness.
+	* Consider re-expressing.
+	
+* Independence Assumption
+	* Groups must be independent of each other.
+	* Data within each group must be independent.
+	* Randomization Condition
+	
+* Equal Variance Assumption
+	* In ANOVA, we pool the variances.  This requires equal variances from each group:  Similar Spread Condition.
+
+
+---
+# More Information
+
+ANOVA Vignette in the `VisualStats` package: https://jbryer.github.io/VisualStats/articles/anova.html
+
+The plots were created using the `VisualStats::anova_vis()` function.
+
+Shiny app:
+
+
+``` r
+remotes::install_github('jbryer/VisualStats')
+library(VisualStats)
+library(ShinyDemo)
+shiny_demo('anova', package = 'VisualStats')
+```
+
+
+---
+class: font120
+# What Next? 
+
+* P-value large -&gt; Nothing left to say
+* P-value small -&gt; Which means are large and which means are small?
+* We can perform a t-test to compare two of them.
+* We assumed the standard deviations are all equal.
+* Use `\(s_p\)`, for pooled standard deviations.
+* Use the Students t-model, df = N - k.
+* If we wanted to do a t-test for each pair:
+	* P(Type I Error) = 0.05 for each test.
+	* Good chance at least one will have a Type I error.
+* **Bonferroni to the rescue!**
+	* Adjust a to `\(\alpha/J\)` where J is the number of comparisons.
+	* 95% confidence (1 - 0.05) with 3 comparisons adjusts to `\((1 - 0.05/3) \approx  0.98333\)`.
+	* Use this adjusted value to find t**.
+
+---
+# Multiple Comparisons (no Bonferroni adjustment)
+
+.code80[
+
+``` r
+cv &lt;- qt(0.05, df = 15)
+tab &lt;- describeBy(hand_washing$Bacterial_Counts, group = hand_washing$Method, mat = TRUE)
+ggplot(hand_washing, aes(x = Method, y = Bacterial_Counts)) + geom_boxplot() + 
+	geom_errorbar(data = tab, aes(x = group1, y = mean, 
+								  ymin = mean - cv * se, ymax = mean + cv * se), 
+				  color = 'darkgreen', width = 0.5, size = 1) +
+	geom_point(data = tab, aes(x = group1, y = mean), color = 'blue', size = 3)
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Multiple Comparisons (3 paired tests)
+
+.code80[
+
+``` r
+cv &lt;- qt(0.05 / 3, df = 15)
+tab &lt;- describeBy(hand_washing$Bacterial_Counts, group = hand_washing$Method, mat = TRUE)
+ggplot(hand_washing, aes(x = Method, y = Bacterial_Counts)) + geom_boxplot() + 
+	geom_errorbar(data = tab, aes(x = group1, y = mean, 
+								  ymin = mean - cv * se, ymax = mean + cv * se), 
+				  color = 'darkgreen', width = 0.5, size = 1) +
+	geom_point(data = tab, aes(x = group1, y = mean), color = 'blue', size = 3)
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Multiple Comparisons (6 paired tests)
+
+.code80[
+
+``` r
+cv &lt;- qt(0.05 / choose(4, 2), df = 15)
+tab &lt;- describeBy(hand_washing$Bacterial_Counts, group = hand_washing$Method, mat = TRUE)
+ggplot(hand_washing, aes(x = Method, y = Bacterial_Counts)) + geom_boxplot() + 
+	geom_errorbar(data = tab, aes(x = group1, y = mean, 
+								  ymin = mean - cv * se, ymax = mean + cv * se ), 
+				  color = 'darkgreen', width = 0.5, size = 1) +
+	geom_point(data = tab, aes(x = group1, y = mean), color = 'blue', size = 3)
+```
+
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+
+---
+class: left, font140
+# One Minute Paper
+
+.pull-left[
+1. What was the most important thing you learned during this class?
+2. What important question remains unanswered for you?
+]
+.pull-right[
+&lt;img src="07-Inference_for_Numerical_Data_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+https://forms.gle/ESBAdHRhzT65fW6c6
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLanguage": "R",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<!-- Source: https://www.garrickadenbuie.com/blog/xaringan-tip-logo-all-slides/ -->
+<style>
+.logo {
+  background-image: url(images/hex/DATA606.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 2em;
+  right: 0.5em;
+  width: 55px;
+  height: 64px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
